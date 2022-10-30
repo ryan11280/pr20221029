@@ -5,3 +5,6 @@
 ### 10/29
 
 Pr建立/GetX controller/讀入json/json模型建立/
+
+### 10/30
+..

@@ -74,7 +74,7 @@ pr20221029
 ┃ ┣ firebase_ref
 ┃ ┃ ┣ loading_status.dart(列出firebase載入狀態)
 ┃ ┃ ┗ references.dart(指定firebase上傳前文件參照)
-┃ ┣ models(文件模型)
+┃ ┣ models(物件模型)
 ┃ ┃ ┗ QuestionPaperModel.dart(題本model)
 ┃ ┣ routes(路由)
 ┃ ┃ ┗ app_routes.dart(GetX路由管理)
@@ -87,7 +87,7 @@ pr20221029
 ┃ ┣ data_uploader_screen.dart(測試: 上傳/成功, 已無用)
 ┃ ┣ firebase_options.dart()
 ┃ ┗ main.dart(主程式)
-┣ test(test?)
+┣ test(測試?)
 ┃ ┗ widget_test.dart
 ┣ README.md(本文件)
 ┣ analysis_options.yaml

@@ -28,6 +28,7 @@
 
 ###檔案結構
 
+```bash
 pr20221029
 ┣ android(內省略)
 ┣ ios(內省略)
@@ -79,3 +80,4 @@ pr20221029
 ┣ pr20221029.iml
 ┣ pubspec.lock
 ┗ pubspec.yaml
+```

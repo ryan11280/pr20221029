@@ -28,7 +28,7 @@
 
 ### 11/1
 
-* add 文件結構說明
+* add 文件結構
 * add Todo
 * note YT...
 * ...
@@ -108,6 +108,6 @@ pr20221029
 * 題目handle/display
 * Firebase Authentication OAuth用戶google登入then轉storage
 * 前項登入與否判斷
-* ...
+* Github PR改private share
 ...
 

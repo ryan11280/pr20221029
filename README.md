@@ -29,15 +29,15 @@
 * 頁面設計?
 * video跟到3:00:00+， 往前除introduction page未做
 
-### 10/31
+### 11/1
 
 * wait...
 ---
 ### 資料夾結構
 ```bash
 pr20221029
-┣ android(內省略)
-┣ ios(內省略)
+┣ android(系統文件/內省略)
+┣ ios(系統文件/內省略)
 ┣ lib
 ┃ ┣ bindings
 ┃ ┃ ┗ initial_bindings.dart

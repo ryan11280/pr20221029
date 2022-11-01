@@ -19,16 +19,19 @@
 ### 10/31
 
 * json service上傳done、選項上傳ok
-* 新增 controllers： question(+uploader)、auth、theme
-* 新增 bindings：initial_bindings，引導觸發controller
-* 新增 GetX用法續讀、路由app_routes
-* 新增 Theme、Color統一放於configs、 明暗主題、Google_fonts
-* 頁面設計?
-* video跟到3:00:00+， 往前除introduction page未做
+* add controllers： question(+uploader)、auth、theme
+* add bindings：initial_bindings，引導觸發controller
+* add GetX用法續讀、路由app_routes
+* add Theme、Color統一放於configs、 明暗主題、Google_fonts
+* check 頁面設計?
+* note YT跟到3:00:00+， 往前除introduction page未做
 
 ### 11/1
 
-* wait...
+* add 文件結構說明
+* add Todo
+* note YT...
+* ...
 ---
 ### Links
 YT video:

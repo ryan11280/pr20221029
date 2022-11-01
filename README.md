@@ -93,11 +93,11 @@ pr20221029
 ┗ pubspec.yaml(Flutter配置/第三方套件引入管理)
 ```
 ---
-### todo
+### Todo
 
 * apple developer account(free)設定 => iOS實機run
-* ?android實機run
-* ?firebase下載後儲存
+* android run
+* firebase下載後儲存
 * 頁面設計
 * 用戶操作流程
 * 跳轉流程/路由

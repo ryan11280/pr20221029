@@ -33,6 +33,22 @@
 
 * wait...
 ---
+### Links
+YT:
+[https://www.youtube.com/watch?v=ZSVnIphlGKI](https://www.youtube.com/watch?v=ZSVnIphlGKI)
+
+Website:
+[https://www.dbestech.com/tutorials/flutter-firebase-complete-app-study-app/](https://www.dbestech.com/tutorials/flutter-firebase-complete-app-study-app/)
+
+Firebase project:
+GCP Location: asia-east1 = Taiwan
+[https://console.firebase.google.com/u/0/project/fir-20221026/overview](https://console.firebase.google.com/u/0/project/fir-20221026/overview)
+
+JSON to Dart:
+[https://javiercbk.github.io/json_to_dart/](https://javiercbk.github.io/json_to_dart/)
+
+
+---
 ### 資料夾結構
 ```bash
 pr20221029

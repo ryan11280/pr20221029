@@ -52,19 +52,20 @@ JSON to Dart:
 ### 資料夾結構
 ```
 pr20221029
-┣ android(系統文件/內省略)
-┣ ios(系統文件/內省略)
+┣ android(平台文件/內省略)
+┣ ios(平台文件/內省略)
+┣ web(平台文件/內省略)
 ┣ lib
 ┃ ┣ bindings
 ┃ ┃ ┗ initial_bindings.dart(初始化bindings)
-┃ ┣ configs
+┃ ┣ configs(參數)
 ┃ ┃ ┗ themes(主題)
 ┃ ┃ ┃ ┣ app_colors.dart(顏色)
 ┃ ┃ ┃ ┣ app_dark_theme.dart(暗色主題)
 ┃ ┃ ┃ ┣ app_light_theme.dart(亮色主題)
 ┃ ┃ ┃ ┣ sub_theme_data_mixin.dart(覆蓋text/icon預設樣式)
 ┃ ┃ ┃ ┗ ui_parameters.dart(亮暗主題判斷)
-┃ ┣ controllers
+┃ ┣ controllers(控制器)
 ┃ ┃ ┣ question_papers
 ┃ ┃ ┃ ┣ data_uploader.dart(上傳json資料to Firebase Firestore)
 ┃ ┃ ┃ ┗ question_paper_controller.dart(載入題本)
@@ -73,30 +74,21 @@ pr20221029
 ┃ ┣ firebase_ref
 ┃ ┃ ┣ loading_status.dart(列出firebase載入狀態)
 ┃ ┃ ┗ references.dart(指定firebase上傳前文件參照)
-┃ ┣ models
+┃ ┣ models(文件模型)
 ┃ ┃ ┗ QuestionPaperModel.dart(題本model)
-┃ ┣ routes
+┃ ┣ routes(路由)
 ┃ ┃ ┗ app_routes.dart(GetX路由管理)
-┃ ┣ screens
+┃ ┣ screens(頁面)
 ┃ ┃ ┣ home
 ┃ ┃ ┃ ┗ home_screen.dart(主頁)
 ┃ ┃ ┗ splash_screen.dart(暫放, 未來應改成登入頁)
-┃ ┣ services
+┃ ┣ services(服務)
 ┃ ┃ ┗ firebase_storage_service.dart(載入圖片 from firebaseStorage)
 ┃ ┣ data_uploader_screen.dart(測試: 上傳/成功, 已無用)
 ┃ ┣ firebase_options.dart()
 ┃ ┗ main.dart(主程式)
-┣ test(?)
+┣ test(test?)
 ┃ ┗ widget_test.dart
-┣ web(?)
-┃ ┣ icons
-┃ ┃ ┣ Icon-192.png
-┃ ┃ ┣ Icon-512.png
-┃ ┃ ┣ Icon-maskable-192.png
-┃ ┃ ┗ Icon-maskable-512.png
-┃ ┣ favicon.png
-┃ ┣ index.html
-┃ ┗ manifest.json
 ┣ README.md(本文件)
 ┣ analysis_options.yaml
 ┣ pr20221029.iml

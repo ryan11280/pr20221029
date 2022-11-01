@@ -31,7 +31,7 @@
 * wait...
 ---
 ### Links
-YT:
+YT video:
 [https://www.youtube.com/watch?v=ZSVnIphlGKI](https://www.youtube.com/watch?v=ZSVnIphlGKI)
 
 Website:
@@ -93,8 +93,18 @@ pr20221029
 ┗ pubspec.yaml(Flutter配置/第三方套件引入管理)
 ```
 ---
-### 流程
-...
 ### todo
+
+* apple developer account(free)設定 => iOS實機run
+* ?android實機run
+* ?firebase下載後儲存
+* 頁面設計
+* 用戶操作流程
+* 跳轉流程/路由
+* 參考資料紀錄
+* 題目handle/display
+* Firebase Authentication OAuth用戶google登入then轉storage
+* 前項登入與否判斷
+* ...
 ...
 

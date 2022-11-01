@@ -41,7 +41,7 @@ Website:
 [https://www.dbestech.com/tutorials/flutter-firebase-complete-app-study-app/](https://www.dbestech.com/tutorials/flutter-firebase-complete-app-study-app/)
 
 Firebase project:
-GCP Location: asia-east1 = Taiwan
+location: asia-east1 = Taiwan
 [https://console.firebase.google.com/u/0/project/fir-20221026/overview](https://console.firebase.google.com/u/0/project/fir-20221026/overview)
 
 JSON to Dart:
@@ -57,7 +57,7 @@ pr20221029
 ┣ lib
 ┃ ┣ bindings
 ┃ ┃ ┗ initial_bindings.dart(初始化bindings)
-┃ ┣ configs(參數)
+┃ ┣ configs
 ┃ ┃ ┗ themes(主題)
 ┃ ┃ ┃ ┣ app_colors.dart(顏色)
 ┃ ┃ ┃ ┣ app_dark_theme.dart(暗色主題)

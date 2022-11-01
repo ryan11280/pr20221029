@@ -24,7 +24,7 @@
 * add GetX用法續讀、路由app_routes
 * add Theme、Color統一放於configs、 明暗主題、Google_fonts
 * check 頁面設計?
-* note YT跟到3:00:00+， 往前除introduction page未做
+* note YT跟到3:00:00+， ?往前除introduction page未做
 
 ### 11/1
 

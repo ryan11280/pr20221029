@@ -56,36 +56,36 @@ pr20221029
 ┣ ios(系統文件/內省略)
 ┣ lib
 ┃ ┣ bindings
-┃ ┃ ┗ initial_bindings.dart
-┃ ┣ configs
-┃ ┃ ┗ themes
-┃ ┃ ┃ ┣ app_colors.dart
-┃ ┃ ┃ ┣ app_dark_theme.dart
-┃ ┃ ┃ ┣ app_light_theme.dart
-┃ ┃ ┃ ┣ sub_theme_data_mixin.dart
-┃ ┃ ┃ ┗ ui_parameters.dart
+┃ ┃ ┗ initial_bindings.dart(初始化bindings)
+┃ ┣ configs(參數)
+┃ ┃ ┗ themes(主題)
+┃ ┃ ┃ ┣ app_colors.dart(顏色)
+┃ ┃ ┃ ┣ app_dark_theme.dart(暗色主題)
+┃ ┃ ┃ ┣ app_light_theme.dart(亮色主題)
+┃ ┃ ┃ ┣ sub_theme_data_mixin.dart(覆蓋text/icon預設樣式)
+┃ ┃ ┃ ┗ ui_parameters.dart(亮暗主題判斷)
 ┃ ┣ controllers
 ┃ ┃ ┣ question_papers
-┃ ┃ ┃ ┣ data_uploader.dart
-┃ ┃ ┃ ┗ question_paper_controller.dart
-┃ ┃ ┣ auth_controller.dart
-┃ ┃ ┗ theme_controller.dart
+┃ ┃ ┃ ┣ data_uploader.dart(上傳json資料to Firebase Firestore)
+┃ ┃ ┃ ┗ question_paper_controller.dart(載入題本)
+┃ ┃ ┣ auth_controller.dart(頁面跳轉)
+┃ ┃ ┗ theme_controller.dart(初始化亮暗主題)
 ┃ ┣ firebase_ref
-┃ ┃ ┣ loading_status.dart
-┃ ┃ ┗ references.dart
+┃ ┃ ┣ loading_status.dart(列出firebase載入狀態)
+┃ ┃ ┗ references.dart(指定firebase上傳前文件參照)
 ┃ ┣ models
-┃ ┃ ┗ QuestionPaperModel.dart
+┃ ┃ ┗ QuestionPaperModel.dart(題本model)
 ┃ ┣ routes
-┃ ┃ ┗ app_routes.dart
+┃ ┃ ┗ app_routes.dart(GetX路由管理)
 ┃ ┣ screens
 ┃ ┃ ┣ home
-┃ ┃ ┃ ┗ home_screen.dart
-┃ ┃ ┗ splash_screen.dart
+┃ ┃ ┃ ┗ home_screen.dart(主頁)
+┃ ┃ ┗ splash_screen.dart(暫放, 未來應改成登入頁)
 ┃ ┣ services
-┃ ┃ ┗ firebase_storage_service.dart
-┃ ┣ data_uploader_screen.dart
-┃ ┣ firebase_options.dart
-┃ ┗ main.dart
+┃ ┃ ┗ firebase_storage_service.dart(載入圖片 from firebaseStorage)
+┃ ┣ data_uploader_screen.dart(測試: 上傳/成功, 已無用)
+┃ ┣ firebase_options.dart()
+┃ ┗ main.dart(主程式)
 ┣ test
 ┃ ┗ widget_test.dart
 ┣ web
@@ -97,9 +97,9 @@ pr20221029
 ┃ ┣ favicon.png
 ┃ ┣ index.html
 ┃ ┗ manifest.json
-┣ README.md
+┣ README.md(本文件)
 ┣ analysis_options.yaml
 ┣ pr20221029.iml
 ┣ pubspec.lock
-┗ pubspec.yaml
+┗ pubspec.yaml(Flutter配置/第三方套件引入管理)
 ```

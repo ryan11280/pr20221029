@@ -86,9 +86,9 @@ pr20221029
 ┃ ┣ data_uploader_screen.dart(測試: 上傳/成功, 已無用)
 ┃ ┣ firebase_options.dart()
 ┃ ┗ main.dart(主程式)
-┣ test
+┣ test(?)
 ┃ ┗ widget_test.dart
-┣ web
+┣ web(?)
 ┃ ┣ icons
 ┃ ┃ ┣ Icon-192.png
 ┃ ┃ ┣ Icon-512.png

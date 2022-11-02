@@ -16,6 +16,7 @@ dependencies:
   cloud_firestore: ^4.0.3  #firebase
   firebase_storage: ^11.0.3 #最新版才能跑
   google_fonts: ^3.0.1
+  flutter_svg: ^1.1.6
 
 dev_dependencies:
   flutter_test:

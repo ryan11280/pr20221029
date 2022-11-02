@@ -9,27 +9,27 @@ class Question {
 const List sample_data = [
   {
     "id": 1,
-    "question":
-        "Flutter is an open-source UI software development kit created by ______",
-    "options": ['Apple', 'Google', 'Facebook', 'Microsoft'],
+    "question": "測試一",
+    "options": ['答案一', '答案二', '答案三', '答案四'],
     "answer_index": 1,
   },
   {
     "id": 2,
-    "question": "When google release Flutter.",
-    "options": ['Jun 2017', 'Jun 2017', 'May 2017', 'May 2018'],
+    "question": "測試二.",
+    "options": ['答案二之一', '答案二之二', '答案二之三', '答案二之四'],
     "answer_index": 2,
   },
   {
     "id": 3,
-    "question": "A memory location that holds a single letter or number.",
-    "options": ['Double', 'Int', 'Char', 'Word'],
+    "question": "測試三",
+    "options": ['3-1', '3-2', '3-3', '3-4'],
     "answer_index": 2,
   },
   {
     "id": 4,
-    "question": "What command do you use to output data to the screen?",
-    "options": ['Cin', 'Count>>', 'Cout', 'Output>>'],
+    "question": "測試四",
+    "options": ['4-1', '4-2', '4-3', '4-4'],
     "answer_index": 2,
   },
 ];
+

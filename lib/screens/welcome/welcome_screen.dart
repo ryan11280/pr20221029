@@ -19,17 +19,17 @@ class WelcomeScreen extends StatelessWidget {
                 children: [
                   Spacer(flex: 2), //2/6
                   Text(
-                    "Let's Play haaa,",
+                    "測驗開始...  ",
                     style: Theme.of(context).textTheme.headline4?.copyWith(
                         color: Colors.white, fontWeight: FontWeight.bold),
                   ),
-                  Text("Enter your informations below"),
+                  Text("輸入您的答案"),
                   Spacer(), // 1/6
                   TextField(
                     decoration: InputDecoration(
                       filled: true,
                       fillColor: Color(0xFF1C2341),
-                      hintText: "Full Name",
+                      hintText: "輸入名字",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(12)),
                       ),
@@ -47,7 +47,7 @@ class WelcomeScreen extends StatelessWidget {
                         borderRadius: BorderRadius.all(Radius.circular(12)),
                       ),
                       child: Text(
-                        "Lets Start Quiz",
+                        "開始測驗",
                         style: Theme.of(context)
                             .textTheme
                             .button

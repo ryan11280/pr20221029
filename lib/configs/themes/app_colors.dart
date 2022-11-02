@@ -31,3 +31,5 @@ const kPrimaryGradient = LinearGradient(
 );
 
 const double kDefaultPadding = 20.0;
+
+const kTopicColor = Color(0xFF111E5E);

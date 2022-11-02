@@ -15,7 +15,7 @@ class QuizScreen extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
         actions: [
-          OutlinedButton(onPressed: _controller.nextQuestion, child: Text("Skip")),
+          OutlinedButton(onPressed: _controller.nextQuestion, child: Text("略過")),
         ],
       ),
       body: Body(key: null,),

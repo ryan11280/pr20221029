@@ -19,7 +19,7 @@ class ScoreScreen extends StatelessWidget {
             children: [
               Spacer(flex: 3),
               Text(
-                "Score",
+                "分數：",
                 style: Theme.of(context)
                     .textTheme
                     .headline3

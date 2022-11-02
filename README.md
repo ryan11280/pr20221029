@@ -118,17 +118,14 @@ pr20221029
 * GetX state management
 ----
 ### 開發環境
-macOS(intel) 12.6
-Flutter: 3.3.4
-Dart: 2.18.2
-Android SDK version: 33.0.0
-IDE: Android Studio 2021.3.1 Patch 1
-Xcode: 14.0.1
-CocoaPods: 1.11.3
-
-Devices:
-simulator: iPhone 14 Pro with iOS 16.0, tested.
-simulator: wait
-iPhone 12 with iOS 14.3, not yet test.
-
-Version Control: GitHub
+>macOS(intel) 12.6
+>Flutter: 3.3.4
+>Dart: 2.18.2
+>Android SDK version: 33.0.0
+>IDE: Android Studio 2021.3.1 Patch 1
+>Xcode: 14.0.1
+>CocoaPods: 1.11.3
+>Version Control: GitHub
+>simulator: iPhone 14 Pro with iOS 16.0, tested.
+>simulator: wait
+>iPhone 12 with iOS 14.3, not yet test.

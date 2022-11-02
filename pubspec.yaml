@@ -12,11 +12,13 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
-  firebase_core: ^2.1.1
+  firebase_core: ^2.1.1 # 1.0.1@教學
   cloud_firestore: ^4.0.3  #firebase
   firebase_storage: ^11.0.3 #最新版才能跑
   google_fonts: ^3.0.1
   flutter_svg: ^1.1.6
+  firebase_auth: ^4.1.0 # 1.0.1@教學
+  google_sign_in: ^5.4.2 # 5.0.0@教學
 
 dev_dependencies:
   flutter_test:

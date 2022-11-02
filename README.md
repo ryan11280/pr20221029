@@ -56,7 +56,7 @@ pr20221029
 ┣ ios(平台文件/內省略)
 ┣ web(平台文件/內省略)
 ┣ lib
-┃ ┣ bindings
+┃ ┣ bindings//提供widgets/service/render等調用between Framework and Engine.
 ┃ ┃ ┗ initial_bindings.dart(初始化bindings)
 ┃ ┣ configs(參數)
 ┃ ┃ ┗ themes(主題)
@@ -130,3 +130,9 @@ pr20221029
 >simulator: iPhone 14 Pro with iOS 16.0, tested. <br>
 >simulator: wait <br>
 >iPhone 12 with iOS 14.3, not yet test.
+
+>JDK 8 update531=>JDK 19.0.1
+---
+### INFO
+android applicationId "com.example.pr20221029"
+./gradlew signingReport

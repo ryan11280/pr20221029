@@ -125,6 +125,7 @@ pr20221029
 >IDE: Android Studio 2021.3.1 Patch 1 <br>
 >Xcode: 14.0.1 <br>
 >CocoaPods: 1.11.3 <br>
+>FirebaseCLI: 11.15.0
 >Version Control: GitHub <br><br>
 >simulator: iPhone 14 Pro with iOS 16.0, tested. <br>
 >simulator: wait <br>

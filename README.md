@@ -32,6 +32,17 @@
 * add Todo
 * note YT...
 * ...
+
+### 11/2
+
+* add 答題頁面
+* add 初始登入頁面參考[https://blog.codemagic.io/firebase-authentication-google-sign-in-using-flutter/](https://blog.codemagic.io/firebase-authentication-google-sign-in-using-flutter/)
+* add service firebase_authentication
+* add 頁面
+* add main2?
+* bindings了解
+* Make github project privately and add contributor.
+* 
 ---
 ### Links
 YT video:
@@ -49,8 +60,9 @@ JSON to Dart:
 
 
 ---
-### 文件結構
+### 文件結構 
 ```
+updated: 20221101
 pr20221029
 ┣ android(平台文件/內省略)
 ┣ ios(平台文件/內省略)

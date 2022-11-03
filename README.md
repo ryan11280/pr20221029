@@ -81,7 +81,7 @@ pr20221029
 ┃ ┣ controllers(控制器)
 ┃ ┃ ┣ question_papers
 ┃ ┃ ┃ ┣ data_uploader.dart(上傳json資料to Firebase Firestore)
-┃ ┃ ┃ ┗ question_paper_controller.dart(載入題本)
+┃ ┃ ┃ ┗ question_paper_controller.dart(載入題本) //1102
 ┃ ┃ ┣ auth_controller.dart(頁面跳轉)
 ┃ ┃ ┣ question_controller.dart(答題頁控制) //1102
 ┃ ┃ ┗ theme_controller.dart(初始化亮暗主題)
@@ -96,16 +96,16 @@ pr20221029
 ┃ ┣ screens(頁面)
 ┃ ┃ ┣ home
 ┃ ┃ ┃ ┗ home_screen.dart(主頁)
-┃ ┃ ┣ login
+┃ ┃ ┣ login //1102
 ┃ ┃ ┃ ┗ login_screen.dart(登入頁)
-┃ ┃ ┣ quiz
+┃ ┃ ┣ quiz //1102
 ┃ ┃ ┃ ┣ components
 ┃ ┃ ┃ ┃ ┣ body.dart()
 ┃ ┃ ┃ ┃ ┣ option.dart()
 ┃ ┃ ┃ ┃ ┗ peogress_bar.dart()
 ┃ ┃ ┃ ┃ ┗ question_card.dart()
 ┃ ┃ ┃ ┗ quiz_screen.dart(答題頁) //1102
-┃ ┃ ┣ score
+┃ ┃ ┣ score //1102
 ┃ ┃ ┃ ┗ score_screen.dart(顯示分數頁)
 ┃ ┃ ┣ welcome
 ┃ ┃ ┃ ┗ welcome_screen.dart(歡迎頁)
@@ -116,7 +116,7 @@ pr20221029
 ┃ ┣ data_uploader_screen.dart(測試: 上傳/成功, 已無用)
 ┃ ┣ firebase_options.dart()
 ┃ ┣ main2.dart(暫用)
-┃ ┗ main.dart(主程式)
+┃ ┗ main.dart(主程式) //1102
 ┣ test(測試?)
 ┃ ┗ widget_test.dart
 ┣ README.md(本文件)

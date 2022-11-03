@@ -62,7 +62,7 @@ JSON to Dart:
 ---
 ### 文件結構 
 ```
-updated: 20221101
+updated: 20221102整理
 
 pr20221029
 ┣ android(平台文件/內省略)
@@ -83,22 +83,39 @@ pr20221029
 ┃ ┃ ┃ ┣ data_uploader.dart(上傳json資料to Firebase Firestore)
 ┃ ┃ ┃ ┗ question_paper_controller.dart(載入題本)
 ┃ ┃ ┣ auth_controller.dart(頁面跳轉)
+┃ ┃ ┣ question_controller.dart(答題頁控制) //1102
 ┃ ┃ ┗ theme_controller.dart(初始化亮暗主題)
 ┃ ┣ firebase_ref
 ┃ ┃ ┣ loading_status.dart(列出firebase載入狀態)
 ┃ ┃ ┗ references.dart(指定firebase上傳前文件參照)
 ┃ ┣ models(物件模型)
+┃ ┃ ┣ Questions.dart(題目暫用) //1102
 ┃ ┃ ┗ QuestionPaperModel.dart(題本model)
 ┃ ┣ routes(路由)
 ┃ ┃ ┗ app_routes.dart(GetX路由管理)
 ┃ ┣ screens(頁面)
 ┃ ┃ ┣ home
 ┃ ┃ ┃ ┗ home_screen.dart(主頁)
-┃ ┃ ┗ splash_screen.dart(暫放, 未來應改成登入頁)
+┃ ┃ ┣ login
+┃ ┃ ┃ ┗ login_screen.dart(登入頁)
+┃ ┃ ┣ quiz
+┃ ┃ ┃ ┣ components
+┃ ┃ ┃ ┃ ┣ body.dart()
+┃ ┃ ┃ ┃ ┣ option.dart()
+┃ ┃ ┃ ┃ ┗ peogress_bar.dart()
+┃ ┃ ┃ ┃ ┗ question_card.dart()
+┃ ┃ ┃ ┗ quiz_screen.dart(答題頁) //1102
+┃ ┃ ┣ score
+┃ ┃ ┃ ┗ score_screen.dart(顯示分數頁)
+┃ ┃ ┣ welcome
+┃ ┃ ┃ ┗ welcome_screen.dart(歡迎頁)
+┃ ┃ ┗ splash_screen.dart(暫放, 未來與welcome擇一改登入頁)
 ┃ ┣ services(服務)
+┃ ┃ ┣ firebase_authentication.dart(Firebase初始登入)
 ┃ ┃ ┗ firebase_storage_service.dart(載入圖片 from firebaseStorage)
 ┃ ┣ data_uploader_screen.dart(測試: 上傳/成功, 已無用)
 ┃ ┣ firebase_options.dart()
+┃ ┣ main2.dart(暫用)
 ┃ ┗ main.dart(主程式)
 ┣ test(測試?)
 ┃ ┗ widget_test.dart

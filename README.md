@@ -5,7 +5,7 @@
 ---
 ### 10/29
 
-* PR建
+* 專案建立
 * GetX controller
 * 讀入json
 * json model建
@@ -63,6 +63,7 @@ JSON to Dart:
 ### 文件結構 
 ```
 updated: 20221101
+
 pr20221029
 ┣ android(平台文件/內省略)
 ┣ ios(平台文件/內省略)
@@ -137,7 +138,7 @@ pr20221029
 >IDE: Android Studio 2021.3.1 Patch 1 <br>
 >Xcode: 14.0.1 <br>
 >CocoaPods: 1.11.3 <br>
->FirebaseCLI: 11.15.0
+>FirebaseCLI: 11.15.0<br>
 >Version Control: GitHub <br><br>
 >simulator: iPhone 14 Pro with iOS 16.0, tested. <br>
 >simulator: wait <br>
@@ -145,6 +146,6 @@ pr20221029
 
 >JDK 8 update531=>JDK 19.0.1
 ---
-### INFO
-android applicationId "com.example.pr20221029"
-./gradlew signingReport
+### note
+android applicationId "com.example.pr20221029" <br>
+./gradlew signingReport <br>

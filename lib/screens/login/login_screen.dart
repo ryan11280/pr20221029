@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sign_in_flutter/sign_in.dart';
+import 'package:pr20221029/services/firebase_authentication.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -34,11 +34,12 @@ class _LoginPageState extends State<LoginPage> {
         primary: Colors.amberAccent, //<-- SEE HERE
       ),
       onPressed: () {
+        null;/*
         signInWithGoogle().then((result) {
           if (result != null) {
             print('ok');
           }
-        });
+        });*/
       },
       child: Padding(
         padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),

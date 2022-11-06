@@ -33,3 +33,5 @@ const kPrimaryGradient = LinearGradient(
 const double kDefaultPadding = 20.0;
 
 const kTopicColor = Color(0xFF111E5E);
+const kHomeButtonColor = Color(0x45445858);
+const kHomekeyColor = Color(0xFF101011);

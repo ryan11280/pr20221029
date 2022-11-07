@@ -42,7 +42,15 @@
 * add main2?
 * bindings了解
 * Make github project privately and add contributor.
-* 
+
+### 11/6
+
+* ...
+
+### 11/7
+
+* ...
+
 ---
 ### Links
 YT video:

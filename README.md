@@ -45,7 +45,7 @@
 
 ### 11/6
 
-* 忘了...
+* 忘...
 
 ### 11/7
 
@@ -64,7 +64,9 @@
 * add create_question(題目製作頁)，應有2頁面(題本名/題目)...排版overflow待解決
 * add home1_screen => 首頁加入CircleAvatar等登入帳號資訊顯示
 * add login_screen => 登入頁面onPressed() => 登入成功跳轉至首頁/失敗顯示錯誤訊息snackbar
+* error: score_screen => 計分錯誤
 * erin's:
+  * add about_screen => 關於頁面
   * add question_screen => 題目製作頁
   * add app_color => 加kHomeButtonColor/kHomekeyColor
   * add question_list => ?

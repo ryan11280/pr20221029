@@ -45,16 +45,29 @@
 
 ### 11/6
 
-* ...
+* 忘了...
 
 ### 11/7
 
-* add 已接上iOS端 Firebase_Authentication: Google login
-** test
+* add 已接上Firebase_Authentication: Google login
+  * add firebase_google_login_controller [REF](//https://ithelp.ithome.com.tw/articles/10259691)
+  * 僅完成iOS
+    * add ios/Runner/Info.plist => 加上URLSchemes
+    * add ios/Runner/AppDelegate.swift => import FirebaseCore/configure
+  * Android(未完成): android/app/google-services.json已放
+  * Web(未完成)
+* auth_controller移除2s後跳轉頁面/之後可加splash screen/Firebase.initializeApp(必須要有options)
 * add 完成登入頁/跳轉至首頁function
 * add 首頁+登入帳號資訊顯示
+* fix app_routes: 頁面跳轉路徑整理
 * note git pull時如遇衝突 => --rebase
-* note 
+* add create_question(題目製作頁)，應有2頁面(題本名/題目)...排版overflow待解決
+* add home1_screen => 首頁加入CircleAvatar等登入帳號資訊顯示
+* add login_screen => 登入頁面onPressed() => 登入成功跳轉至首頁/失敗顯示錯誤訊息snackbar
+* erin's:
+  * add question_screen => 題目製作頁
+  * add app_color => 加kHomeButtonColor/kHomekeyColor
+  * add question_list => ?
 
 ### 11/8
 

@@ -66,6 +66,7 @@
 * add login_screen => 登入頁面onPressed() => 登入成功跳轉至首頁/失敗顯示錯誤訊息snackbar
 * error: score_screen => 計分錯誤待查
 * erin's:
+  * add dependencies: footer: ^0.0.4 #版權底部
   * add about_screen => 關於/版權/參考資料頁面
   * add question_screen => 題目製作頁
   * add app_color => 加kHomeButtonColor/kHomekeyColor

@@ -62,8 +62,8 @@
 * fix app_routes: 頁面跳轉路徑整理
 * note git pull時如遇衝突 => --rebase
 * add create_question(題目製作頁)，應有2頁面(題本名/題目)...排版overflow待解決
-* add home1_screen => 首頁加入CircleAvatar等登入帳號資訊顯示
-* add login_screen => 登入頁面onPressed() => 登入成功跳轉至首頁/失敗顯示錯誤訊息snackbar
+* add home1_screen => 首頁加入CircleAvatar等登入帳號資訊顯示/返回登入頁
+* add login_screen => 登入頁面onPressed() => 判斷登入成功跳轉至首頁/失敗顯示錯誤訊息snackbar
 * error: score_screen => 計分錯誤待查
 * erin's:
   * add dependencies: footer: ^0.0.4 #版權底部

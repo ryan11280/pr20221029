@@ -46,10 +46,10 @@ class _LoginPageState extends State<LoginPage> {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Image(image: AssetImage("assets/google_logo.png"), height: 35.0),
+          children: const <Widget>[
+           // Image(image: AssetImage(""), height: 35.0),
             Padding(
-              padding: const EdgeInsets.only(left: 10),
+              padding: EdgeInsets.only(left: 10),
               child: Text(
                 'Sign in with Google',
                 style: TextStyle(

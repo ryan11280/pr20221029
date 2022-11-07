@@ -49,10 +49,12 @@
 
 ### 11/7
 
-* add 已接上Firebase_Authentication: Google login
+* add 已接上iOS端 Firebase_Authentication: Google login
+** test
 * add 完成登入頁/跳轉至首頁function
 * add 首頁+登入帳號資訊顯示
-* note 
+* note git pull時如遇衝突 => --rebase
+* note
 
 ### 11/8
 

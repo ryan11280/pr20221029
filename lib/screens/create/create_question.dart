@@ -32,37 +32,45 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Expanded(
-          child: ListTile(
-            title: const Text('Lafayette'),
-            leading: Radio<SingingCharacter>(
-              value: SingingCharacter.lafayette,
-              groupValue: _character,
-              onChanged: (SingingCharacter? value) {
-                setState(() {
-                  _character = value;
-                });
-              },
+    return Scaffold(
+      body: SafeArea(
+        child: Column(
+          children: <Widget>[
+            ListTile(
+              title: const Text('Lafayette'),
+              leading: Radio<SingingCharacter>(
+                value: SingingCharacter.lafayette,
+                groupValue: _character,
+                onChanged: (SingingCharacter? value) {
+                  setState(() {
+                    _character = value;
+                  });
+                },
+              ),
             ),
-          ),
-        ),
-        Expanded(
-          child: ListTile(
-            title: const Text('Thomas Jefferson'),
-            leading: Radio<SingingCharacter>(
-              value: SingingCharacter.jefferson,
-              groupValue: _character,
-              onChanged: (SingingCharacter? value) {
-                setState(() {
-                  _character = value;
-                });
-              },
+            ListTile(
+              title: const TextField(
+                maxLines:1,
+                minLines:1,
+                decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.white,
+                  hintText: '請輸入題目',
+                ),
+              ),
+              leading: Radio<SingingCharacter>(
+                value: SingingCharacter.jefferson,
+                groupValue: _character,
+                onChanged: (SingingCharacter? value) {
+                  setState(() {
+                    _character = value;
+                  });
+                },
+              ),
             ),
-          ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }

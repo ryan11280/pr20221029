@@ -1,7 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pr20221029/configs/themes/app_colors.dart';
+import 'package:get/get.dart';
 
+import '../../main2.dart';
+import '../login/login_screen.dart';
 
 void main() => runApp(MaterialApp(home: Home()));
 
@@ -37,7 +41,7 @@ class HomeState extends State<Home> {
                               )),
                     ),
                     SizedBox(
-                      height: 4,
+                      height: 10,
                     ),
                     Text(
                       " Home",
@@ -47,12 +51,55 @@ class HomeState extends State<Home> {
                               fontSize: 14,
                               fontWeight: FontWeight.w200)),
                     ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    //FirebaseAuth.instance.currentUser!.displayName!
+                    Row(
+                      children: [
+                        CircleAvatar(
+                          radius: 30,
+                          backgroundImage: NetworkImage(
+                              FirebaseAuth.instance.currentUser!.photoURL!),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              FirebaseAuth.instance.currentUser!.displayName!,
+                              style: GoogleFonts.openSans(
+                                  textStyle: TextStyle(
+                                    color: Colors.black87,
+                                    fontSize: 18,
+                                  )),
+                            ),
+                            Text(
+                              FirebaseAuth.instance.currentUser!.email!,
+                              style: GoogleFonts.openSans(
+                                  textStyle: TextStyle(
+                                    color: Colors.black87,
+                                    fontSize: 14,
+                                  )),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
                   ],
                 ),
-                IconButton(
-                  alignment: Alignment.topCenter,
-                  icon: const Icon(Icons.volume_up),
-                  onPressed: () {},
+                SizedBox(
+                  height: 70,
+                  child: IconButton(
+                    alignment: Alignment.topCenter,
+                    icon: const Icon(Icons.logout, size: 40),
+                    onPressed: () {
+                      print("按下: 返回登入頁");
+                      Get.offAll(()=>googleLoginPage());
+                    },
+                  ),
                 )
               ],
             ),

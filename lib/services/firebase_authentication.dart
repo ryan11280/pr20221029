@@ -19,7 +19,7 @@ class Authentication {
   static Future<FirebaseApp> initializeFirebase({
     required BuildContext context,
   }) async {
-    FirebaseApp firebaseApp = await Firebase.initializeApp();
+    FirebaseApp firebaseApp = await Firebase.initializeApp(); //可能重複initialize
 
     User? user = FirebaseAuth.instance.currentUser;
 

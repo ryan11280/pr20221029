@@ -1,12 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:pr20221029/screens/home/home1_screen.dart';
 import 'package:pr20221029/services/firebase_authentication.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:pr20221029/controllers/firebase_google_login_controller.dart';
+import 'package:pr20221029/services/firebase_authentication.dart';
+import 'package:get/get.dart';
 
-class LoginPage extends StatefulWidget {
+
+class googleLoginPage extends StatefulWidget {
+  //final AuthRepository _authRepository = AuthRepository();
+  //googleLoginPage({Key? key}) : super(key: key);
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _googleLoginPageState createState() => _googleLoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _googleLoginPageState extends State<googleLoginPage> {
+  get _authRepository => AuthRepository();
+  //get _googleSignIn => signInWithGoogle2();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +30,7 @@ class _LoginPageState extends State<LoginPage> {
             children: <Widget>[
               FlutterLogo(size: 150),
               SizedBox(height: 50),
-              _signInButton(),
+              signInButton(),
             ],
           ),
         ),
@@ -27,14 +38,31 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Widget _signInButton() {
+  Widget signInButton() {
     return OutlinedButton(
       style: OutlinedButton.styleFrom(
         backgroundColor: Colors.black,
         primary: Colors.amberAccent, //<-- SEE HERE
       ),
-      onPressed: () {
-        null;/*
+      onPressed: () async {
+        void loginSuccess() {
+          print("登入成功！");
+          Get.snackbar("登入成功", "歡迎光臨",
+              snackPosition: SnackPosition.BOTTOM,
+              backgroundColor: Colors.red,
+              colorText: Colors.white);
+          Get.offAll(Home());
+        }
+        void loginFail() {
+          print("登入失敗！");
+          Get.snackbar("登入失敗", "請重新登入",
+              snackPosition: SnackPosition.BOTTOM,
+              backgroundColor: Colors.red,
+              colorText: Colors.white);
+        }
+        await _authRepository.signInWithGoogle() == true ? loginSuccess() : loginFail();
+        //await signInWithGoogle();
+        /*
         signInWithGoogle().then((result) {
           if (result != null) {
             print('ok');

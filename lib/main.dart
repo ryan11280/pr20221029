@@ -1,18 +1,18 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:pr20221029/firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:pr20221029/bindings/initial_bindings.dart';
 import 'package:pr20221029/configs/themes/app_light_theme.dart';
 import 'package:pr20221029/controllers/theme_controller.dart';
-import 'package:pr20221029/firebase_options.dart';
 import 'package:get/get.dart';
 import 'package:pr20221029/routes/app_routes.dart';
 import 'package:pr20221029/screens/splash_screen.dart';
 import 'configs/themes/app_dark_theme.dart';
 import 'data_uploader_screen.dart';
-import 'firebase_options.dart';
 
-void main() {
+void main() async{
   WidgetsFlutterBinding.ensureInitialized();//
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform); //一定要給options
   InitialBindings().dependencies(); //初始化Bindings
   runApp(MyApp());
 }

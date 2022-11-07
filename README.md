@@ -37,11 +37,11 @@
 
 * add 答題頁面
 * add 初始登入頁面參考[https://blog.codemagic.io/firebase-authentication-google-sign-in-using-flutter/](https://blog.codemagic.io/firebase-authentication-google-sign-in-using-flutter/)
-* add service firebase_authentication
+* add service firebase_authenticatio done
 * add 頁面
-* add main2?
-* bindings了解
-* Make github project privately and add contributor.
+* add main2? 
+* bindings了解 done
+* Make github project privately and add contributor. done
 
 ### 11/6
 
@@ -49,8 +49,14 @@
 
 ### 11/7
 
-* ...
+* add 已接上Firebase_Authentication: Google login
+* add 完成登入頁/跳轉至首頁function
+* add 首頁+登入帳號資訊顯示
+* note 
 
+### 11/8
+
+* pre
 ---
 ### Links
 YT video:

@@ -65,6 +65,8 @@
 * add home1_screen => 首頁加入CircleAvatar等登入帳號資訊顯示/返回登入頁
 * add login_screen => 登入頁面onPressed() => 判斷登入成功跳轉至首頁/失敗顯示錯誤訊息snackbar
 * error: score_screen => 計分錯誤待查
+* note: 疑為overflow問題 => ListTile widgets require a Material widget ancestor.
+  In Material Design, most widgets are conceptually "printed" on a sheet of material. In Flutter's material library, that material is represented by the Material widget. It is the Material widget that renders ink splashes, for instance. Because of this, many material library widgets require that there be a Material widget in the tree above them.
 * erin's:
   * add dependencies: footer: ^0.0.4 #版權底部
   * add about_screen => 關於/版權/參考資料頁面

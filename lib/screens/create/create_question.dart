@@ -1,41 +1,68 @@
-import 'package:flutter/material.dart';
-//等用看看listView
+//overflow測試中......
+//To introduce a Material widget,
+// you can either directly include one,
+// or use a widget that contains Material itself,
+// such as a Card, Dialog, Drawer, or Scaffold.
 
-class createQuestion extends StatelessWidget {
-  const createQuestion({Key? key}) : super(key: key);
+import 'package:flutter/material.dart';
+
+
+class radioTest extends StatelessWidget {
+  const radioTest({super.key});
+
+  static const String _title = 'Flutter Code Sample';
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: SafeArea(
-        child: Column(
-          mainAxisSize:MainAxisSize.min,
-          children: [
-            Text("Create Question"),
-            SizedBox(height: 50,),
-            Container(
-              child: Column(
-                mainAxisSize:MainAxisSize.min,
-                children: [
-                Row(
-                  mainAxisSize:MainAxisSize.min,
-                  children: [
-                  Radio(value: "123", groupValue: "123", onChanged: null),
-                  SizedBox(width: 10,),
-                  TextField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Question',
-                    ),
-                  ),
-                ],
-                )
-              ],
-              ),
-            )
-          ],
+    return MyStatefulWidget();
+  }
+}
+
+enum SingingCharacter { lafayette, jefferson }
+
+class MyStatefulWidget extends StatefulWidget {
+  const MyStatefulWidget({super.key});
+
+  @override
+  State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
+}
+
+class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+  SingingCharacter? _character = SingingCharacter.lafayette;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        Expanded(
+          child: ListTile(
+            title: const Text('Lafayette'),
+            leading: Radio<SingingCharacter>(
+              value: SingingCharacter.lafayette,
+              groupValue: _character,
+              onChanged: (SingingCharacter? value) {
+                setState(() {
+                  _character = value;
+                });
+              },
+            ),
+          ),
         ),
-      ),
+        Expanded(
+          child: ListTile(
+            title: const Text('Thomas Jefferson'),
+            leading: Radio<SingingCharacter>(
+              value: SingingCharacter.jefferson,
+              groupValue: _character,
+              onChanged: (SingingCharacter? value) {
+                setState(() {
+                  _character = value;
+                });
+              },
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

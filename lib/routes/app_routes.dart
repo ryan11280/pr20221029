@@ -13,7 +13,7 @@ class AppRoutes {
   static List<GetPage> routes() =>
       [
         //GetPage(name: "/", page: () => googleLoginPage()), //預設登入頁 login_screen.dart
-        GetPage(name: "/", page: () => createQuestion()),
+        GetPage(name: "/", page: () => MyStatefulWidget()),
         //GetPage(name: "/introduction", page: () => SplashScreen())
         //GetPage(name: "/home", page: () => Home()) //在home1_screen.dart
       ];

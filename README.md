@@ -76,17 +76,17 @@
 * pre
 ---
 ### Links and references
-YT video:
+* YT video:
 [https://www.youtube.com/watch?v=ZSVnIphlGKI](https://www.youtube.com/watch?v=ZSVnIphlGKI)
 
-Website:
+* Website:
 [https://www.dbestech.com/tutorials/flutter-firebase-complete-app-study-app/](https://www.dbestech.com/tutorials/flutter-firebase-complete-app-study-app/)
 
-Firebase project:
+* Firebase project:
 location: asia-east1 = Taiwan
 [https://console.firebase.google.com/u/0/project/fir-20221026/overview](https://console.firebase.google.com/u/0/project/fir-20221026/overview)
 
-JSON to Dart:
+* JSON to Dart:
 [https://javiercbk.github.io/json_to_dart/](https://javiercbk.github.io/json_to_dart/)
 
 * Flutter platform with Dart language

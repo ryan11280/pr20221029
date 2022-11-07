@@ -64,7 +64,7 @@
 * add create_question(題目製作頁)，應有2頁面(題本名/題目)...排版overflow待解決
 * add home1_screen => 首頁加入CircleAvatar等登入帳號資訊顯示
 * add login_screen => 登入頁面onPressed() => 登入成功跳轉至首頁/失敗顯示錯誤訊息snackbar
-* error: score_screen => 計分錯誤
+* error: score_screen => 計分錯誤待查
 * erin's:
   * add about_screen => 關於/版權/參考資料頁面
   * add question_screen => 題目製作頁
@@ -75,7 +75,7 @@
 
 * pre
 ---
-### Links
+### Links and references
 YT video:
 [https://www.youtube.com/watch?v=ZSVnIphlGKI](https://www.youtube.com/watch?v=ZSVnIphlGKI)
 
@@ -89,6 +89,10 @@ location: asia-east1 = Taiwan
 JSON to Dart:
 [https://javiercbk.github.io/json_to_dart/](https://javiercbk.github.io/json_to_dart/)
 
+* Flutter platform with Dart language
+* [2022 Flutter Firebase Master Class Tutorial Complete App | Backend Data Storage](https://www.youtube.com/watch?v=ZSVnIphlGKI)
+* Google Firebase, Firestore, FirebaseAuthenication
+* GetX state management
 
 ---
 ### 文件結構 
@@ -163,20 +167,13 @@ pr20221029
 * android run
 * firebase下載後儲存
 * 頁面設計
-* 用戶操作流程
-* 跳轉流程/路由
+* 跳轉流程/路由...done
 * 參考資料紀錄
 * 題目handle/display
-* Firebase Authentication OAuth用戶google登入then轉storage
-* 前項登入與否判斷
-* Github PR改private share
+* Firebase Authentication OAuth用戶google登入then轉storage...1107完成ios登入
+* 前項登入與否判斷...1107done
+* Github PR改private share...done
 ...
-----
-### Reference
-* Flutter platform with Dart language
-* [2022 Flutter Firebase Master Class Tutorial Complete App | Backend Data Storage](https://www.youtube.com/watch?v=ZSVnIphlGKI)
-* Google Firebase, Firestore, FirebaseAuthenication
-* GetX state management
 ----
 ### 開發環境
 >macOS(intel) 12.6 <br>

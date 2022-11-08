@@ -33,18 +33,19 @@ class HomeState extends State<Home> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      "主頁",
-                      style: GoogleFonts.openSans(
+                      "Home",
+                      style: GoogleFonts.acme(
                           textStyle: TextStyle(
+                            fontWeight: FontWeight.bold,
                               color: Colors.black87,
-                              fontSize: 28,
+                              fontSize: 40,
                               )),
                     ),
                     SizedBox(
                       height: 10,
                     ),
                     Text(
-                      " Home",
+                      "Welcome!",
                       style: GoogleFonts.openSans(
                           textStyle: TextStyle(
                               color: Color(0xFF101012),
@@ -70,7 +71,7 @@ class HomeState extends State<Home> {
                           children: [
                             Text(
                               FirebaseAuth.instance.currentUser!.displayName!,
-                              style: GoogleFonts.openSans(
+                              style: GoogleFonts.alice(
                                   textStyle: TextStyle(
                                     color: Colors.black87,
                                     fontSize: 18,
@@ -78,7 +79,7 @@ class HomeState extends State<Home> {
                             ),
                             Text(
                               FirebaseAuth.instance.currentUser!.email!,
-                              style: GoogleFonts.openSans(
+                              style: GoogleFonts.alice(
                                   textStyle: TextStyle(
                                     color: Colors.black87,
                                     fontSize: 14,
@@ -125,18 +126,18 @@ class GridDashboard extends StatelessWidget {
 
   Items item2 = Items(
     title: "製作\n題目",
-    subtitle: "Creat",
+    subtitle: "Create",
     event: "",
     img: "",
   );
   Items item3 = Items(
-    title: "紀錄",
+    title: "測驗\n紀錄",
     subtitle: "Record",
     event: "",
     img: "",
   );
   Items item4 = Items(
-    title: "關於",
+    title: "關於\n我們",
     subtitle: "About",
     event: "",
     img: "",

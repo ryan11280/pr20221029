@@ -107,7 +107,7 @@ location: asia-east1 = Taiwan
 ---
 ### 文件結構 
 ```
-updated: 20221102整理
+updated: 20221102整理...待更新
 
 pr20221029
 ┣ android(平台文件/內省略)

@@ -79,6 +79,10 @@
 
 ### 11/8
 
+* .
+
+### 11/9
+
 * pre
 ---
 ### Links and references

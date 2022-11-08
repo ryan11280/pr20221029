@@ -4,7 +4,6 @@ import 'package:pr20221029/configs/themes/app_colors.dart';
 import 'package:pr20221029/controllers/question_controller.dart';
 import 'package:pr20221029/models/Questions.dart';
 import 'package:flutter_svg/svg.dart';
-
 import 'progress_bar.dart';
 import 'question_card.dart';
 

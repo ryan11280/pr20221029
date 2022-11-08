@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:pr20221029/configs/themes/app_colors.dart';
 class Product {
   final image;
   final name;
@@ -24,7 +24,26 @@ class questionlist extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color(0xfff6f7f9),
       appBar: AppBar(
+        backgroundColor: kGrayColor,
         title: Text('Question Book'),
+
+        actions: <Widget>[
+
+          Padding(
+            padding: const EdgeInsets.only(right:25.0),
+            child: IconButton(
+              icon: Icon(
+                  Icons.home,
+                  color: Colors.white,
+                  size:30.0
+              ),
+              onPressed: () {
+                // do something
+              },
+            ),
+          )
+        ],
+
       ),
       body: ListView(
         children: <Widget>[
@@ -41,13 +60,13 @@ class questionlist extends StatelessWidget {
                             padding:
                                 EdgeInsets.symmetric(vertical: 20, horizontal: 5),
                             decoration: BoxDecoration(
-                              color: Colors.black87,
+                              color: Colors.grey,
                               borderRadius: BorderRadius.circular(15),
                               boxShadow: [
                                 BoxShadow(
                                     color: Colors.grey,
                                     blurRadius: 10,
-                                    spreadRadius: 3,
+                                    spreadRadius: 2,
                                     offset: Offset(3, 4))
                               ],
                             ),

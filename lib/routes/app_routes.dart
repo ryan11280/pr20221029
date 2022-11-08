@@ -1,7 +1,6 @@
 import 'package:pr20221029/screens/about/about_screen.dart';
 import 'package:pr20221029/screens/create/create_question.dart';
 import 'package:pr20221029/screens/questionlist/question_list.dart';
-
 import '../screens/home/home1_screen.dart';
 import '../screens/splash_screen.dart';
 import 'package:get/get.dart';

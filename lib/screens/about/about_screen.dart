@@ -2,6 +2,9 @@ import 'package:footer/footer.dart';
 import 'package:footer/footer_view.dart';
 import 'package:flutter/material.dart';
 import'package:pr20221029/configs/themes/app_colors.dart';
+import 'package:get/get.dart';
+import 'package:pr20221029/screens/home/home1_screen.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -69,6 +72,7 @@ class FooterPageState extends State<FooterPage> {
                   size:30.0
               ),
               onPressed: () {
+                Get.offAll(()=>Home());
                 // do something
               },
             ),
@@ -86,7 +90,7 @@ class FooterPageState extends State<FooterPage> {
                   children: <Widget>[
                     Padding(
                       padding: EdgeInsets.only(top: 50, left: 70),
-                      child: Text('test test '),
+                      child: Text('關於/版權/參考資料 放此～'),
                     )
                   ],
                 ),

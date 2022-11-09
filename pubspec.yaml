@@ -20,6 +20,7 @@ dependencies:
   firebase_auth: ^4.1.0 # 1.0.1@教學
   google_sign_in: ^5.4.2 # 5.0.0@教學
   footer: ^0.0.4 #版權底部
+  xen_popup_card: ^0.0.1 #彈出視窗 1108midnight
 
 dev_dependencies:
   flutter_test:

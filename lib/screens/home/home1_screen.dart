@@ -3,8 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pr20221029/configs/themes/app_colors.dart';
 import 'package:get/get.dart';
+import 'package:pr20221029/screens/create/create_question.dart';
+import 'package:xen_popup_card/xen_card.dart';
+
+
 
 import '../../main2.dart';
+import '../about/about_screen.dart';
 import '../login/login_screen.dart';
 
 void main() => runApp(MaterialApp(home: Home()));
@@ -160,46 +165,67 @@ class GridDashboard extends StatelessWidget {
           crossAxisSpacing: 18,
           mainAxisSpacing: 18,
           children: myList.map((data) {
-            return Container(
-              decoration: BoxDecoration(
-                  color: kHomeButtonColor, borderRadius: BorderRadius.circular(30)),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  SizedBox(
-                    height: 14,
+            return Material(
+              child: InkWell(
+                onTap: (){
+                  print("${data.title} 已被按下！");
+                  //Get.offAll(page) //跳轉應放於後面
+                  //個別頁面跳轉 by 1108加班
+                  if(data.title == "開始\n測驗"){
+                    //Get.offAll(()=>Main2());
+                  }
+                  else if(data.title == "製作\n題目"){
+                    Get.offAll(()=>radioTest());
+                  }
+                  else if(data.title == "測驗\n紀錄"){
+                    //Get.offAll(()=>Main2());
+                  }
+                  else if(data.title == "關於\n我們"){
+                    Get.offAll(()=>FooterPage());
+                  }
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: kHomeButtonColor, borderRadius: BorderRadius.circular(30)),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      SizedBox(
+                        height: 14,
+                      ),
+                      Text(
+                        data.title!,
+                        style: GoogleFonts.openSans(
+                            textStyle: TextStyle(
+                                color: kHomekeyColor,
+                                fontSize: 30,
+                                )),
+                      ),
+                      SizedBox(
+                        height: 8,
+                      ),
+                      Text(
+                        data.subtitle!,
+                        style: GoogleFonts.openSans(
+                            textStyle: TextStyle(
+                                color: Colors.black54,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600)),
+                      ),
+                      SizedBox(
+                        height: 14,
+                      ),
+                      Text(
+                        data.event!,
+                        style: GoogleFonts.openSans(
+                            textStyle: TextStyle(
+                                color: Colors.black54,
+                                fontSize: 11,
+                                fontWeight: FontWeight.w300)),
+                      ),
+                    ],
                   ),
-                  Text(
-                    data.title!,
-                    style: GoogleFonts.openSans(
-                        textStyle: TextStyle(
-                            color: kHomekeyColor,
-                            fontSize: 30,
-                            )),
-                  ),
-                  SizedBox(
-                    height: 8,
-                  ),
-                  Text(
-                    data.subtitle!,
-                    style: GoogleFonts.openSans(
-                        textStyle: TextStyle(
-                            color: Colors.black54,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600)),
-                  ),
-                  SizedBox(
-                    height: 14,
-                  ),
-                  Text(
-                    data.event!,
-                    style: GoogleFonts.openSans(
-                        textStyle: TextStyle(
-                            color: Colors.black54,
-                            fontSize: 11,
-                            fontWeight: FontWeight.w300)),
-                  ),
-                ],
+                ),
               ),
             );
           }).toList()),

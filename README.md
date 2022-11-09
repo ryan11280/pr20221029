@@ -79,11 +79,21 @@
 
 ### 11/8
 
-* ...
+* note 首頁4個按鈕Container外包Inkwell+Ink => 可print
+  * 要外包Material才能顯示按壓痕跡 
+* add 彈出視窗 => xen_popup_card: ^0.0.1 
+  * 加頁：create_question_popup
+* note 先彈窗：https://stackoverflow.com/questions/52164369/show-alert-dialog-on-app-main-screen-load-automatically-in-flutter
+* add About加AppBar/回home
+* fix 主頁 按鈕包Material/Inkwell及按鈕跳轉
+* fix 題目製作頁 基本layouts
+* 測試popup
+* 關於頁面 加入AppBar/回home
+
 
 ### 11/9
 
-* pre
+* ...
 ---
 ### Links and references
 * YT video:

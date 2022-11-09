@@ -89,7 +89,8 @@
 * fix 題目製作頁 基本layouts
 * 測試popup
 * 關於頁面 加入AppBar/回home
-
+* read 怎麼從FireStore拿資料
+* todo googleLogin後 用戶建題本/答題紀錄/登出?
 
 ### 11/9
 

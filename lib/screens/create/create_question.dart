@@ -9,8 +9,7 @@ import 'package:flutter/material.dart';
 import '../../configs/themes/app_colors.dart';
 import 'add_question_book_popup.dart';
 import 'package:get/get.dart';
-import'package:pr20221029/screens/home/home1_screen.dart';
-
+import 'package:pr20221029/screens/home/home1_screen.dart';
 
 class radioTest extends StatelessWidget {
   const radioTest({super.key});
@@ -37,29 +36,22 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
 
   @override
   Widget build(BuildContext context) {
-    Future.delayed(Duration.zero, () => popupDialogBuilder(context)); //先彈窗 https://stackoverflow.com/questions/52164369/show-alert-dialog-on-app-main-screen-load-automatically-in-flutter
+    //會卡 先刪掉
+    //先彈窗 https://stackoverflow.com/questions/52164369/show-alert-dialog-on-app-main-screen-load-automatically-in-flutter
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kGrayColor,
         title: const Text(
           '題目製作頁',
           style: TextStyle(fontWeight: FontWeight.w200),
-
         ),
-
-
         actions: <Widget>[
-
           Padding(
-            padding: const EdgeInsets.only(right:25.0),
+            padding: const EdgeInsets.only(right: 25.0),
             child: IconButton(
-              icon: Icon(
-                  Icons.home,
-                  color: Colors.white,
-                  size:30.0
-              ),
+              icon: Icon(Icons.home, color: Colors.white, size: 30.0),
               onPressed: () {
-                Get.offAll(()=>Home());
+                Get.offAll(() => Home());
                 // do something
               },
             ),
@@ -74,7 +66,9 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
               children: <Widget>[
                 //上區
                 Container(
-                  child: Text("show questions here.", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30)),
+                  child: Text("show questions here.",
+                      style:
+                      TextStyle(fontWeight: FontWeight.bold, fontSize: 30)),
                 ),
                 SizedBox(
                   height: 30,
@@ -85,8 +79,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                     children: [
                       ListTile(
                         title: const TextField(
-                          maxLines:1,
-                          minLines:1,
+                          maxLines: 1,
+                          minLines: 1,
                           decoration: InputDecoration(
                             filled: true,
                             fillColor: Colors.white,
@@ -105,8 +99,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                       ),
                       ListTile(
                         title: const TextField(
-                          maxLines:1,
-                          minLines:1,
+                          maxLines: 1,
+                          minLines: 1,
                           decoration: InputDecoration(
                             filled: true,
                             fillColor: Colors.white,
@@ -125,8 +119,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                       ),
                       ListTile(
                         title: const TextField(
-                          maxLines:1,
-                          minLines:1,
+                          maxLines: 1,
+                          minLines: 1,
                           decoration: InputDecoration(
                             filled: true,
                             fillColor: Colors.white,
@@ -145,8 +139,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                       ),
                       ListTile(
                         title: const TextField(
-                          maxLines:1,
-                          minLines:1,
+                          maxLines: 1,
+                          minLines: 1,
                           decoration: InputDecoration(
                             filled: true,
                             fillColor: Colors.white,

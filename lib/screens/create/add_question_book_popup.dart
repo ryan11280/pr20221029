@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:xen_popup_card/xen_card.dart';
+import '../home/home1_screen.dart';
+import 'package:get/get.dart';
 
 //showdialog
 Future<void> popupDialogBuilder(BuildContext context) {
@@ -7,26 +9,24 @@ Future<void> popupDialogBuilder(BuildContext context) {
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        title: const Text('Basic dialog title'),
-        content: const Text('A dialog is a type of modal window that\n'
-            'appears in front of app content to\n'
-            'provide critical information, or prompt\n'
-            'for a decision to be made.'),
+        title: const Text('Title'),
+        content: const Text('Content.......'),
         actions: <Widget>[
           TextButton(
             style: TextButton.styleFrom(
               textStyle: Theme.of(context).textTheme.labelLarge,
             ),
-            child: const Text('Disable'),
+            child: const Text('回首頁'),
             onPressed: () {
-              Navigator.of(context).pop();
+              //Navigator.of(context).pop();
+              Get.offAll(() => Home());
             },
           ),
           TextButton(
             style: TextButton.styleFrom(
               textStyle: Theme.of(context).textTheme.labelLarge,
             ),
-            child: const Text('Enable'),
+            child: const Text('確定'),
             onPressed: () {
               Navigator.of(context).pop();
             },

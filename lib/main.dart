@@ -14,7 +14,7 @@ void main() async{
   WidgetsFlutterBinding.ensureInitialized();//
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform); //一定要給options
   InitialBindings().dependencies(); //初始化Bindings
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
         debugShowCheckedModeBanner: false,
-      theme: Get.find<ThemeController>().lightTheme, //initializeThemeData
+        theme: Get.find<ThemeController>().lightTheme, //initializeThemeData
         getPages: AppRoutes.routes());
   }
 }

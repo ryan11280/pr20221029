@@ -12,8 +12,8 @@ class AuthController extends GetxController{
 
   void initAuth() async{
     //await Future.delayed(const Duration(seconds: 2)); //延遲2s後再跳轉 用於splash過渡 暫移除
-    WidgetsFlutterBinding.ensureInitialized(); //加
-    await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform,); //加options
+    //WidgetsFlutterBinding.ensureInitialized(); //加
+    //await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform,); //加options
     //navigateToWhere(); //再來叫到這
   }
 

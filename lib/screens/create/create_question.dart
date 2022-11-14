@@ -5,6 +5,8 @@
 // such as a Card, Dialog, Drawer, or Scaffold.
 
 import 'package:flutter/material.dart';
+import 'package:pr20221029/models/question_model.dart';
+import 'package:pr20221029/screens/questionlist/question_list.dart';
 
 import '../../configs/themes/app_colors.dart';
 import 'add_question_book_popup.dart';
@@ -36,8 +38,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
 
   @override
   Widget build(BuildContext context) {
-    //會卡 先刪掉
-    //先彈窗 https://stackoverflow.com/questions/52164369/show-alert-dialog-on-app-main-screen-load-automatically-in-flutter
+    _checkLoaded(); //確認視窗載入後再彈窗,之後可改
+    //會卡 先刪掉 //先彈窗 https://stackoverflow.com/questions/52164369/show-alert-dialog-on-app-main-screen-load-automatically-in-flutter
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kGrayColor,
@@ -166,5 +168,18 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         ),
       ),
     );
+  }
+
+  //載入後彈窗
+  void _checkLoaded() {
+    WidgetsBinding.instance?.addPostFrameCallback((_) {
+      showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: Text('Hello'),
+            content: Text('Hello World'),
+          ));
+    });
+    super.initState();
   }
 }

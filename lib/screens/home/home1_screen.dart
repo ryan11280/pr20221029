@@ -9,6 +9,7 @@ import 'package:xen_popup_card/xen_card.dart';
 
 
 import '../../main2.dart';
+import '../../models/question_model.dart';
 import '../about/about_screen.dart';
 import '../login/login_screen.dart';
 
@@ -21,6 +22,7 @@ class Home extends StatefulWidget {
 
 class HomeState extends State<Home> {
   @override
+  Questions questions = Questions(); //在question_model.dart
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFC1C1C1),
@@ -177,10 +179,16 @@ class GridDashboard extends StatelessWidget {
                   else if(data.title == "製作\n題目"){
                     Get.offAll(()=>radioTest());
                   }
-                  else if(data.title == "測驗\n紀錄"){
+                  else if(data.title == "測驗\n紀錄") {
                     //Get.offAll(()=>Main2());
-                  }
-                  else if(data.title == "關於\n我們"){
+                    //List<String> testList;
+                    //add to questionModel
+                    //這邊在試...
+                    questionModel().questions?.forEach((element) {
+                      print("print~~");
+                      print(element.question);
+                    });
+                  } else if(data.title == "關於\n我們"){
                     Get.offAll(()=>FooterPage());
                   }
                 },

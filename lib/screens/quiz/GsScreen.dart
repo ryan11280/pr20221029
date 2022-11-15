@@ -46,18 +46,38 @@ class LoadDataFromGoogleSheetState extends State<GsGoogleSheetData> {
                             trailing: const Icon(Icons.arrow_forward_ios),
                             title: Text(
                                 "Q${GsQuestionListNew[index].id}: ${GsQuestionListNew[index].questionName}"),
-                            subtitle: Column(
+                            subtitle: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 const SizedBox(height: 10),
-                                Text("選項一：${GsQuestionListNew[index].answer1}"),
-                                Text("選項二：${GsQuestionListNew[index].answer2}"),
-                                Text("選項三：${GsQuestionListNew[index].answer3}"),
-                                Text("選項四：${GsQuestionListNew[index].answer4}"),
-                                const SizedBox(height: 3),
-                                Text("正確答案：${GsQuestionListNew[index].correctAnswer}"),
-                                Text("加入時間：${kDatetimeFormat.format(DateTime.parse(GsQuestionListNew[index].addTime))}"),
+                                Container(
+                                  child: Column(
+                                    children: [
+                                      Text(
+                                          "選項一：${GsQuestionListNew[index].answer1}"),
+                                      Text(
+                                          "選項二：${GsQuestionListNew[index].answer2}"),
+                                      Text(
+                                          "選項三：${GsQuestionListNew[index].answer3}"),
+                                      Text(
+                                          "選項四：${GsQuestionListNew[index].answer4}"),
+                                    ],
+                                  ),
+                                ),
+                                //const SizedBox(width: 200),
+                                Container(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
 
+                                    children: [
+                                      Text(
+                                          "正確答案：${GsQuestionListNew[index].correctAnswer}"),
+                                      Text(
+                                          "加入時間：${kDatetimeFormat.format(DateTime.parse(GsQuestionListNew[index].addTime))}"),
+                                    ],
+                                  ),
+                                )
                               ],
                             ),
                           ),

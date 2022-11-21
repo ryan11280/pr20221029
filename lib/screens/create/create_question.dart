@@ -216,21 +216,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                               fontSize: 16.0);
                           Get.offAll(() => radioTest());
                         },
-                        child: const Text('重來'),
-                      ),
-                      ElevatedButton(
-                        onPressed: () {
-                          Fluttertoast.showToast(
-                              msg: "還沒做",
-                              toastLength: Toast.LENGTH_SHORT,
-                              gravity: ToastGravity.BOTTOM,
-                              timeInSecForIosWeb: 1,
-                              backgroundColor: Colors.grey,
-                              textColor: Colors.white,
-                              fontSize: 16.0);
-                          //Get.offAll(() => Home());
-                        },
-                        child: const Text('下一題'),
+                        child: const Text('重新輸入'),
                       ),
                       ElevatedButton(
                         onPressed: () async {
@@ -246,7 +232,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                                 toastLength: Toast.LENGTH_SHORT,
                                 gravity: ToastGravity.BOTTOM,
                                 timeInSecForIosWeb: 1,
-                                backgroundColor: Colors.grey,
+                                backgroundColor: Colors.redAccent,
                                 textColor: Colors.white,
                                 fontSize: 16.0);
                           } else {
@@ -268,6 +254,15 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                                 answer3: answer3,
                                 answer4: answer4,
                                 correctAnswer: correctAnswer);
+                            Fluttertoast.showToast(
+                                msg: "題目上傳成功",
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.BOTTOM,
+                                timeInSecForIosWeb: 1,
+                                backgroundColor: Colors.greenAccent,
+                                textColor: Colors.white,
+                                fontSize: 16.0);
+                            Get.offAll(() => radioTest());
                           }
                         },
                         child: const Text('送上Fs'),
@@ -281,27 +276,40 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                     children: [
                       ElevatedButton(
                         onPressed: () async {
-                          var questionListLength =
-                          await FsCheckQuestionsNumber();
-                          Fluttertoast.showToast(
-                              msg: "目前Fs題庫有$questionListLength題",
-                              toastLength: Toast.LENGTH_SHORT,
-                              gravity: ToastGravity.BOTTOM,
-                              timeInSecForIosWeb: 1,
-                              backgroundColor: Colors.grey,
-                              textColor: Colors.white,
-                              fontSize: 16.0);
-                        },
-                        child: const Text('查firebase題目數量'),
-                      ),
-                      ElevatedButton(
-                        onPressed: () async {
                           Fluttertoast.showToast(
                             msg: "跳轉至讀入CSV頁",
                           );
                           Get.offAll(() => importCsvScreen());
                         },
-                        child: const Text('讀入csv檔'),
+                        child: const Text('Gs匯入csv'),
+                      ),
+                      ElevatedButton(
+                        onPressed: () async {
+                          var questionListLength =
+                          await FsCheckQuestionsNumber();
+                          //check questionList is empty or not
+                          if (questionListLength == 0) {
+                            Fluttertoast.showToast(
+                                msg: "Fs題庫是空的, 請先上傳或匯入題目",
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.BOTTOM,
+                                timeInSecForIosWeb: 1,
+                                backgroundColor: Colors.redAccent,
+                                textColor: Colors.white,
+                                fontSize: 16.0);
+                          } else {
+                            Fluttertoast.showToast(
+                                msg: "目前Fs上有$questionListLength個題目",
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.BOTTOM,
+                                timeInSecForIosWeb: 1,
+                                backgroundColor: Colors.grey,
+                                textColor: Colors.white,
+                                fontSize: 16.0);
+                            Get.offAll(() => radioTest());
+                          }
+                        },
+                        child: const Text('查Fs題數'),
                       ),
                       ElevatedButton(
                         onPressed: () async {

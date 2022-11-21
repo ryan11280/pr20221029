@@ -34,7 +34,7 @@ class _scorefomalState extends State<scorefomal> {
           )
         ],
       ),
-      backgroundColor: kGrayColor,
+      backgroundColor: kGrayColor, //ojoj
       body: Column(
         children: [
           SizedBox(

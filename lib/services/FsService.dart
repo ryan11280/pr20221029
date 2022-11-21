@@ -1,6 +1,45 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 
+//questionList to
+
+
+//fetch question from firestore as a list
+Future<List> fetchQuestion() async {
+  await Firebase.initializeApp();
+  List questionList = [];
+  QuerySnapshot questionSnapshot = await FirebaseFirestore.instance
+      .collection('questionListFirebase')
+      .get();
+  questionSnapshot.docs.forEach((element) {
+    questionList.add(element.data());
+  });
+  print(questionList[0]['question']);
+  return questionList;
+}
+
+
+//Read recently added questions
+Future readRecentlyAddedQuestions() async {
+  await Firebase.initializeApp();
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final CollectionReference _questionsCollectionReference =
+      _firestore.collection('questionListFirebase');
+  final QuerySnapshot _querySnapshot =
+      await _questionsCollectionReference.get();
+  final List<QueryDocumentSnapshot> FsQuestionsList =
+      _querySnapshot.docs;
+  FsQuestionsList.forEach((document) {
+    //print(document.data());
+  });
+  //FsQuestionsList sort by addTime
+  FsQuestionsList.sort((a, b) => b['addTime'].compareTo(a['addTime']));
+  //print(FsQuestionsList[0]['questionName']);
+  //print('Sevice端: 最新一題: ${FsQuestionsList.last.data()}');
+  return FsQuestionsList;
+}
+
+
 //Delete Firebase collection
 Future FsDeleteCollection() async {
   //String collectionName
@@ -15,6 +54,7 @@ Future FsDeleteCollection() async {
   print("Fs集合: questionListFirebase 刪除完成");
 }
 
+
 //查詢目前在Firebase上的題目數量
 Future FsCheckQuestionsNumber() async {
   print("執行FsCheckQuestionsNumber");
@@ -27,6 +67,7 @@ Future FsCheckQuestionsNumber() async {
   print("Fs題庫數量 = ${questionDocuments.length}");
   return questionDocuments.length;
 }
+
 
 //Create a new question to Firebase
 Future FsCreateQuestion(

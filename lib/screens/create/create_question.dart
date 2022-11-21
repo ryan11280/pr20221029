@@ -306,7 +306,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                                 backgroundColor: Colors.grey,
                                 textColor: Colors.white,
                                 fontSize: 16.0);
-                            Get.offAll(() => radioTest());
                           }
                         },
                         child: const Text('查Fs題數'),

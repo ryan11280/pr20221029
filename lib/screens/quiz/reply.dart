@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pr20221029/controllers/question_controller.dart';
 import '../../configs/themes/app_colors.dart';
+import '../../services/FsService.dart';
 import '../create/create_question.dart';
 import '../home/home1_screen.dart';
 import 'components/body.dart';
-//vgbbnmjk
+
 class reply extends StatefulWidget {
   const reply({Key? key}) : super(key: key);
 
@@ -117,7 +118,6 @@ class _replyState extends State<reply> {
                         borderRadius: BorderRadius.circular(15),
                       ),
                       child: Text('   D')),
-
                 ),
                 SizedBox(
                   height: 20,
@@ -130,10 +130,8 @@ class _replyState extends State<reply> {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       OutlinedButton(
-
                         child: Text('下一題'),
                         onPressed: () {},
-
                         style: OutlinedButton.styleFrom(
                           shadowColor: Colors.black87,
                           fixedSize: Size(80, 30),
@@ -142,7 +140,6 @@ class _replyState extends State<reply> {
                             borderRadius: BorderRadius.circular(18.0),
                           ),
                           side: BorderSide(width: 2, color: Colors.grey),
-
                         ),
                       ),
                       SizedBox(
@@ -150,7 +147,6 @@ class _replyState extends State<reply> {
                       ),
                       OutlinedButton(
                         child: Text('交卷'),
-
                         onPressed: () {},
                         style: OutlinedButton.styleFrom(
                           shadowColor: Colors.black87,
@@ -162,8 +158,26 @@ class _replyState extends State<reply> {
                           side: BorderSide(width: 2, color: Colors.grey),
                         ),
                       ),
+                      SizedBox(
+                        width: 35, // <-- SEE HERE
+                      ),
+                      OutlinedButton(
+                        child: Text('Test'),
+                        onPressed: () {
+                          //test action
+                          fetchQuestion();
 
-
+                        },
+                        style: OutlinedButton.styleFrom(
+                          shadowColor: Colors.black87,
+                          fixedSize: Size(80, 30),
+                          primary: kBlackColor,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                          ),
+                          side: BorderSide(width: 2, color: Colors.grey),
+                        ),
+                      ),
                     ],
                   ),
                 ),

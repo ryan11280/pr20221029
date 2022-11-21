@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:pr20221029/configs/themes/app_colors.dart';
 import 'package:get/get.dart';
 import 'package:pr20221029/screens/create/create_question.dart';
+import 'package:pr20221029/screens/quiz/reply.dart';
 import 'package:xen_popup_card/xen_card.dart';
 import '../about/about_screen.dart';
 import '../login/login_screen.dart';
@@ -177,7 +178,7 @@ class GridDashboard extends StatelessWidget {
                   //Get.offAll(page) //跳轉應放於後面
                   //個別頁面跳轉 by 1108加班
                   if(data.title == "開始\n測驗"){
-                    //Get.offAll(()=>Main2());
+                    Get.offAll(()=>reply());
                   }
                   else if(data.title == "製作\n題目"){
                     Get.offAll(()=>radioTest());

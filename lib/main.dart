@@ -10,7 +10,7 @@ import 'package:pr20221029/screens/splash_screen.dart';
 import 'configs/themes/app_dark_theme.dart';
 import 'data_uploader_screen.dart';
 
-void main() async{
+void main() async{ //1115改future
   WidgetsFlutterBinding.ensureInitialized();//
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform); //一定要給options
   InitialBindings().dependencies(); //初始化Bindings

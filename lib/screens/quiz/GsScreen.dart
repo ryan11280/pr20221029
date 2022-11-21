@@ -7,6 +7,7 @@ import '../../models/GsModel.dart';
 import '../../services/GsService.dart';
 
 List<GsQuestionSheets> GsQuestionListNew = []; //依model建立空list 放外面working!
+List<GsQuestionSheets> GsQuestionListNew2 = [];
 
 //介面區
 class GsGoogleSheetData extends StatefulWidget {
@@ -72,7 +73,7 @@ class LoadDataFromGoogleSheetState extends State<GsGoogleSheetData> {
 
                                     children: [
                                       Text(
-                                          "正確答案：${GsQuestionListNew[index].correctAnswer}"),
+                                          "正確答案：${GsQuestionListNew[index].correctAnswer.toString()}"),
                                       Text(
                                           "加入時間：${kDatetimeFormat.format(DateTime.parse(GsQuestionListNew[index].addTime))}"),
                                     ],

@@ -1,21 +1,22 @@
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pr20221029/configs/themes/app_colors.dart';
 import 'package:get/get.dart';
 import 'package:pr20221029/screens/create/create_question.dart';
-import 'package:xen_popup_card/xen_card.dart';
 import '../about/about_screen.dart';
 import '../login/login_screen.dart';
 
 void main() => runApp(MaterialApp());
 
-class Home extends StatefulWidget {
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
   @override
-  HomeState createState() => new HomeState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class HomeState extends State<Home> {
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,17 +60,10 @@ class HomeState extends State<Home> {
                     //FirebaseAuth.instance.currentUser!.displayName!
                     Row(
                       children: [
-                        //檢查登入資訊，避免無法取得圖片錯誤1121
-                        if(FirebaseAuth.instance.currentUser!.photoURL != null)
-                          CircleAvatar(
-                            backgroundImage: NetworkImage(FirebaseAuth.instance.currentUser!.photoURL!),
-                            radius: 30,
-                          )
-                        else(
-                          const CircleAvatar(
-                            radius: 30,
-                            child: Icon(Icons.person),
-                          )
+                        CircleAvatar(
+                          radius: 30,
+                          backgroundImage: NetworkImage(
+                              FirebaseAuth.instance.currentUser!.photoURL!),
                         ),
                         SizedBox(
                           width: 10,
@@ -78,8 +72,7 @@ class HomeState extends State<Home> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              //check displayName is null or not 1121
-                              FirebaseAuth.instance.currentUser!.displayName != null ? FirebaseAuth.instance.currentUser!.displayName! : "No Name",
+                              FirebaseAuth.instance.currentUser!.displayName!,
                               style: GoogleFonts.alice(
                                   textStyle: TextStyle(
                                     color: Colors.black87,
@@ -87,8 +80,7 @@ class HomeState extends State<Home> {
                                   )),
                             ),
                             Text(
-                              //check email is null or not 1121
-                              FirebaseAuth.instance.currentUser!.email != null ? FirebaseAuth.instance.currentUser!.email! : "No Email",
+                              FirebaseAuth.instance.currentUser!.email!,
                               style: GoogleFonts.alice(
                                   textStyle: TextStyle(
                                     color: Colors.black87,
@@ -124,6 +116,7 @@ class HomeState extends State<Home> {
     );
   }
 }
+
 
 class GridDashboard extends StatelessWidget {
   Items item1 =

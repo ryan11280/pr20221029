@@ -8,13 +8,13 @@ class GsQuestionSheets {
         required this.answer3,
         required this.answer4,
         required this.correctAnswer});
-
-  int id;
-  String addTime; //暫改string
+  //全改dynamic
+  String id;
+  String addTime;
   String questionName;
   String answer1;
   String answer2;
   String answer3;
   String answer4;
-  int correctAnswer;
+  String correctAnswer;
 }

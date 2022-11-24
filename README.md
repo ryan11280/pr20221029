@@ -4,20 +4,20 @@
 
 ---
 ### 10/29
-
+* 中山@
 * 專案建立
 * GetX controller
 * 讀入json
 * json model建
 
 ### 10/30
-
+* 中正@
 * JSON to Dart model建立
 * json傳上firestore
 * collection and subcollection
 
 ### 10/31
-
+* 中正@/大安
 * json service上傳done、選項上傳ok
 * add controllers： question(+uploader)、auth、theme
 * add bindings：initial_bindings，引導觸發controller
@@ -27,14 +27,14 @@
 * note YT跟到3:00:00+， ?往前除introduction page未做
 
 ### 11/1
-
+* 大安
 * add 文件結構
 * add Todo
 * note YT...
 * ...
 
 ### 11/2
-
+* 大安@
 * add 答題頁面
 * add 初始登入頁面參考[https://blog.codemagic.io/firebase-authentication-google-sign-in-using-flutter/](https://blog.codemagic.io/firebase-authentication-google-sign-in-using-flutter/)
 * add service firebase_authenticatio done
@@ -43,12 +43,18 @@
 * bindings了解 done
 * Make github project privately and add contributor. done
 
-### 11/6
+### 11/3
+* 新店
 
+### 11/5
+* 台東
+
+### 11/6
+* 中山@
 * 忘...
 
 ### 11/7
-
+* 中正@
 * add 已接上Firebase_Authentication: Google login
   * add firebase_google_login_controller [REF](//https://ithelp.ithome.com.tw/articles/10259691)
   * 僅完成iOS
@@ -78,7 +84,7 @@
   * add question_list => ?
 
 ### 11/8
-
+* 士林@/淡水
 * note 首頁4個按鈕Container外包Inkwell+Ink => 可print
   * 要外包Material才能顯示按壓痕跡 
 * add 彈出視窗 => xen_popup_card: ^0.0.1 

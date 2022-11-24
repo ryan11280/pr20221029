@@ -158,12 +158,12 @@
 > 淡水
 * md update.
 * todo:
-  - logo implementation.
+  - logo import.
   - Specify the number of questions, start the test.
   - Calculate a display in the score page.
   - Every HTTP request try-catch error handling.
-  - project structure tree outdated, need to refactor.
-  - sleep..
+  - Project structure tree outdated, need to refactor.
+  - Sleep.....
 
 
 ---

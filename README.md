@@ -156,7 +156,7 @@
 ### 11/24
 
 > 淡水
-* 進度整理
+* md update.
 * todo:
   - logo implementation.
   - Specify the number of questions, start the test.

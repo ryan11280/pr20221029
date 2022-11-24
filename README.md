@@ -145,10 +145,25 @@
 ### 11/23
 
 * 中正@
+* FsService add fetchFsQuestionList(), to get question list from firestore.
+* create FsModel, store question from firestore as a list model.
+* 測驗頁顯示測試題目顯示
+* tofix: 
+  - quesionList load, should be fetch data when reply page loaded.
+  - FsService: individually add/imported question's "correctAnswer" format is not match.
+  - Make it work: web side(google login).
 
 ### 11/24
 
 * 淡水
+* 進度整理
+* todo:
+  - logo implementation.
+  - Specify the number of questions, start the test.
+  - Calculate a display in the score page.
+  - Every HTTP request try-catch error handling.
+  - project structure tree outdated, need to refactor.
+  - sleep..
 
 
 ---

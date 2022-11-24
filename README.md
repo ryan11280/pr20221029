@@ -155,7 +155,7 @@
 
 ### 11/24
 
-* 淡水
+> 淡水
 * 進度整理
 * todo:
   - logo implementation.

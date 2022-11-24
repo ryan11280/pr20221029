@@ -141,6 +141,8 @@
 ### 11/21
 
 > 中正@/淡水
+* Google Sheets Csv import to FireStore function is working.
+* question write/delete on GsService.
 
 ### 11/23
 

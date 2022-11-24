@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get/state_manager.dart';
+import 'package:pr20221029/models/FsModel.dart';
 import 'package:pr20221029/models/Questions.dart';
 import 'package:pr20221029/screens/score/score_screen.dart';
 

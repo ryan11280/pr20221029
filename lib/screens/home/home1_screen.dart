@@ -1,11 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pr20221029/configs/themes/app_colors.dart';
 import 'package:get/get.dart';
 import 'package:pr20221029/screens/create/create_question.dart';
 import 'package:pr20221029/screens/quiz/reply.dart';
 import 'package:xen_popup_card/xen_card.dart';
+import '../../services/FsService.dart';
 import '../about/about_screen.dart';
 import '../login/login_screen.dart';
 
@@ -173,18 +175,39 @@ class GridDashboard extends StatelessWidget {
           children: myList.map((data) {
             return Material(
               child: InkWell(
-                onTap: (){
+                onTap: () async {
                   print("${data.title} 已被按下！");
                   //Get.offAll(page) //跳轉應放於後面
                   //個別頁面跳轉 by 1108加班
                   if(data.title == "開始\n測驗"){
-                    Get.offAll(()=>reply());
+                    //check questionListLength is null or not
+                    var questionListLength = await FsCheckQuestionsNumber();
+                    if(questionListLength == 0){
+                      Fluttertoast.showToast(
+                          msg: "Fs題庫是空的, 請先製作題目",
+                          toastLength: Toast.LENGTH_SHORT,
+                          gravity: ToastGravity.BOTTOM,
+                          timeInSecForIosWeb: 1,
+                          backgroundColor: Colors.redAccent,
+                          textColor: Colors.white,
+                          fontSize: 16.0);
+                    }
+                    else{
+                      Get.offAll(()=>reply());
+                    }
                   }
                   else if(data.title == "製作\n題目"){
                     Get.offAll(()=>radioTest());
                   }
                   else if(data.title == "測驗\n紀錄"){
-                    //Get.offAll(()=>Main2());
+                    Fluttertoast.showToast(
+                        msg: "有機會來做",
+                        toastLength: Toast.LENGTH_SHORT,
+                        gravity: ToastGravity.BOTTOM,
+                        timeInSecForIosWeb: 1,
+                        backgroundColor: Colors.blueGrey,
+                        textColor: Colors.white,
+                        fontSize: 16.0);
                   }
                   else if(data.title == "關於\n我們"){
                     Get.offAll(()=>FooterPage());

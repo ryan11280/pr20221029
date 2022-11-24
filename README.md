@@ -147,7 +147,7 @@
 > 中正@
 * FsService add fetchFsQuestionList(), to get question list from firestore.
 * create FsModel, store question from firestore as a list model.
-* 測驗頁顯示測試題目顯示
+* test for show questions in reply page.
 * tofix: 
   - quesionList load, should be fetch data when reply page loaded.
   - FsService: individually add/imported question's "correctAnswer" format is not match.

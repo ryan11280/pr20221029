@@ -159,12 +159,15 @@
 
 > 淡水
 * md update.
+* android/ios logo set. https://appicon.co/
+* splash screen testing.. auth_controller
 * todo:
   - logo import.
   - Specify the number of questions, start the test.
   - Calculate a display in the score page.
   - Every HTTP request try-catch error handling.
   - Project structure tree outdated, need to refactor.
+  - app name change.
   - get some sleep...
 
 

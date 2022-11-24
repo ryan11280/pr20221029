@@ -88,6 +88,14 @@ class FooterPageState extends State<FooterPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
+                    //show logo
+                    Center(
+                      child: Image.asset(
+                        'assets/images/qalogo.png',
+                        width: 300,
+                        height: 300,
+                      ),
+                    ),
                     Padding(
                       padding: EdgeInsets.only(top: 50, left: 70),
                       child: Text('關於/版權/參考資料 放此～'),

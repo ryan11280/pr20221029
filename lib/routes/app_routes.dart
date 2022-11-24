@@ -18,7 +18,7 @@ class AppRoutes {
   static List<GetPage> routes() =>
       [
         //GetPage(name: "/", page: () => googleLoginPage()), //預設登入頁 login_screen.dart
-        GetPage(name: "/", page: () => Home()),
+        GetPage(name: "/", page: () => SplashScreen()),
         //GetPage(name: "/home", page: () => Home()) //在home1_screen.dart
       ];
 }

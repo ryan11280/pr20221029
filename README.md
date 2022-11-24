@@ -163,7 +163,7 @@
   - Calculate a display in the score page.
   - Every HTTP request try-catch error handling.
   - Project structure tree outdated, need to refactor.
-  - Sleep.....
+  - get some sleep...
 
 
 ---

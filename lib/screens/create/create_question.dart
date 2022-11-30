@@ -71,21 +71,25 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                       Text("Your question",
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 30)),
-                      TextField(
-                        controller: controllerList[0],
-                        onChanged: (value) {
-                          question = controllerList[0].text.toString();
-                        },
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: '請輸入題目',
+                      SizedBox(height: 25),
+                      Padding(
+                        padding: const EdgeInsets.only(left:16.0,right:16.0),
+                        child: TextField(
+                          controller: controllerList[0],
+                          onChanged: (value) {
+                            question = controllerList[0].text.toString();
+                          },
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(),
+                            labelText: '請輸入題目',
+                          ),
                         ),
                       ),
                     ],
                   ),
                 ),
                 SizedBox(
-                  height: 30,
+                  height: 35,
                 ),
                 //選項區
                 Container(

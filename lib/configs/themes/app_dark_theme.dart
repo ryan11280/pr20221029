@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:pr20221029/configs/themes/sub_theme_data_mixin.dart';
 
 const Color primaryDarkColorDark = Color(0xff2e3c62);
-const Color primaryColorDark = Color(0xff99ace1);
+const Color primaryColorDark = Color(0xcd133c62);
 const Color mainTextColorDark = Colors.white;
 
 class DarkTheme with SubThemeData {

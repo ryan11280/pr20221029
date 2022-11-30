@@ -170,14 +170,15 @@ class GridDashboard extends StatelessWidget {
     ];
 
     return Flexible(
+
       child: GridView.count(
           childAspectRatio: 1.0,
           padding: EdgeInsets.only(left: 16, right: 16),
           crossAxisCount: 2,
-          crossAxisSpacing: 18,
-          mainAxisSpacing: 18,
+          crossAxisSpacing: 20,
+          mainAxisSpacing: 20,
           children: myList.map((data) {
-            return Material(
+            return Container(
               child: InkWell(
                 onTap: () async {
                   print("${data.title} 已被按下！");

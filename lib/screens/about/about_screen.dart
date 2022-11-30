@@ -55,7 +55,7 @@ class FooterPageState extends State<FooterPage> {
       appBar: AppBar(
         backgroundColor: kGrayColor,
         title: const Text(
-          'A B O U T',
+          '關於我們',
           style: TextStyle(fontWeight: FontWeight.w200),
 
         ),
@@ -79,55 +79,57 @@ class FooterPageState extends State<FooterPage> {
           )
         ],
       ),
-      body: FooterView(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Padding(
+      body: SafeArea(
+        child: FooterView(
+            children: <Widget>[
+              Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    //show logo
-                    Center(
-                      child: Image.asset(
-                        'assets/images/qalogo.png',
-                        width: 300,
-                        height: 300,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      //show logo
+                      Center(
+                        child: Image.asset(
+                          'assets/images/qalogo.png',
+                          width: 300,
+                          height: 300,
+                        ),
                       ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 50, left: 70),
-                      child: Text('關於/版權/參考資料 放此～'),
-                    )
-                  ],
+                      Padding(
+                        padding: EdgeInsets.only(top: 50, left: 70),
+                        child: Text('關於/版權/參考資料 放此～'),
+                      )
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
-          footer: Footer(
-            child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: <Widget>[
-                  Center(),
-                  Text(
-                    'Copyright ©2022, All Rights Reserved.',
-                    style: TextStyle(
-                        fontWeight: FontWeight.w300,
-                        fontSize: 12.0,
-                        color: Color(0xFF162A49)),
-                  ),
-                  Text(
-                    'Powered by Question',
-                    style: TextStyle(
-                        fontWeight: FontWeight.w300,
-                        fontSize: 12.0,
-                        color: Color(0xFF162A49)),
-                  ),
-                ]),
-            padding: EdgeInsets.all(5.0),
-          )),
+            ],
+            footer: Footer(
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    Center(),
+                    Text(
+                      'Copyright ©2022, All Rights Reserved.',
+                      style: TextStyle(
+                          fontWeight: FontWeight.w300,
+                          fontSize: 12.0,
+                          color: Color(0xFF162A49)),
+                    ),
+                    Text(
+                      'Powered by Question',
+                      style: TextStyle(
+                          fontWeight: FontWeight.w300,
+                          fontSize: 12.0,
+                          color: Color(0xFF162A49)),
+                    ),
+                  ]),
+              padding: EdgeInsets.all(5.0),
+            )),
+      ),
     );
   }
 }

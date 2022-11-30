@@ -17,9 +17,9 @@ import 'package:pr20221029/screens/create/add_question_book_popup.dart';
 class AppRoutes {
   static List<GetPage> routes() =>
       [
-        //GetPage(name: "/", page: () => googleLoginPage()), //預設登入頁 login_screen.dart
         GetPage(name: "/", page: () => SplashScreen()),
-        //GetPage(name: "/home", page: () => Home()) //在home1_screen.dart
+        //GetPage(name: "/home", page: () => Home()), //home1_screen.dart
+        GetPage(name: "/login", page: () => googleLoginPage()), //login_screen.dart
       ];
 }
 

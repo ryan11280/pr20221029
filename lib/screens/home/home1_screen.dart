@@ -6,10 +6,10 @@ import 'package:pr20221029/configs/themes/app_colors.dart';
 import 'package:get/get.dart';
 import 'package:pr20221029/screens/create/create_question.dart';
 import 'package:pr20221029/screens/quiz/reply.dart';
-import 'package:xen_popup_card/xen_card.dart';
 import '../../services/FsService.dart';
 import '../about/about_screen.dart';
 import '../login/login_screen.dart';
+import '../record/record.dart';
 
 void main() => runApp(MaterialApp());
 
@@ -25,8 +25,8 @@ class HomeState extends State<Home> {
       backgroundColor: const Color(0xFFC1C1C1),
       body: Column(
         children: <Widget>[
-          SizedBox(
-            height: 110,
+          const SizedBox(
+            height: 120,
           ),
           Padding(
             padding: EdgeInsets.only(left: 16, right: 16),
@@ -46,7 +46,7 @@ class HomeState extends State<Home> {
                           )),
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 20,
                     ),
                     Text(
                       "Welcome!",
@@ -111,6 +111,8 @@ class HomeState extends State<Home> {
                     icon: const Icon(Icons.logout, size: 40),
                     onPressed: () {
                       print("按下: 返回登入頁");
+                      //logout
+                      FirebaseAuth.instance.signOut();
                       Get.offAll(()=>googleLoginPage());
                     },
                   ),
@@ -119,7 +121,7 @@ class HomeState extends State<Home> {
             ),
           ),
           SizedBox(
-            height: 40,
+            height: 80,
           ),
           GridDashboard()
         ],
@@ -155,6 +157,8 @@ class GridDashboard extends StatelessWidget {
     event: "",
     img: "",
   );
+
+  GridDashboard({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -200,14 +204,7 @@ class GridDashboard extends StatelessWidget {
                     Get.offAll(()=>radioTest());
                   }
                   else if(data.title == "測驗\n紀錄"){
-                    Fluttertoast.showToast(
-                        msg: "有機會來做",
-                        toastLength: Toast.LENGTH_SHORT,
-                        gravity: ToastGravity.BOTTOM,
-                        timeInSecForIosWeb: 1,
-                        backgroundColor: Colors.blueGrey,
-                        textColor: Colors.white,
-                        fontSize: 16.0);
+                    Get.offAll(()=>records());
                   }
                   else if(data.title == "關於\n我們"){
                     Get.offAll(()=>FooterPage());

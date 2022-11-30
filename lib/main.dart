@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
         debugShowCheckedModeBanner: false,
-        theme: Get.find<ThemeController>().lightTheme, //initializeThemeData
+        theme: Get.find<ThemeController>().lightTheme, //initialize Default Theme
         getPages: AppRoutes.routes());
   }
 }

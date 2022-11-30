@@ -13,15 +13,16 @@ class AuthController extends GetxController{
   }
 
   void initAuth() async{
-    await Future.delayed(const Duration(seconds: 1)); //延遲2s後再跳轉 用於splash過渡 暫移除
+    await Future.delayed(const Duration(seconds: 1)); //延遲1s後再跳轉 用於splash過渡
     WidgetsFlutterBinding.ensureInitialized(); //加
     await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform,); //加options
-    navigateToWhere(); //再來叫到這
+    navigateToHome(); //再來叫到這
+
   }
 
-  void navigateToWhere(){
+  void navigateToHome(){
     //Get.offAllNamed("/"); //最後叫這 用於splash過渡 暫改home
     //go to home
-    Get.offAll(()=>Home());
+    Get.offAllNamed("/login"); //最後叫這
   }
 }

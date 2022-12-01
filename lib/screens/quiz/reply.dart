@@ -483,6 +483,64 @@ class _replyState extends State<reply> {
                           side: const BorderSide(width: 2, color: Colors.grey),
                         ),
                       ),
+                      OutlinedButton(
+                        child: const Text('Test'),
+                        onPressed: () async {
+                          var questionListLength =
+                              await FsCheckQuestionsNumber();
+                          int itemCount = 3; //本次考題數量
+                          if (questionListLength == 0) {
+                            Fluttertoast.showToast(
+                                msg: "Fs題庫是空的, 請先上傳或匯入題目",
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.BOTTOM,
+                                timeInSecForIosWeb: 1,
+                                backgroundColor: Colors.redAccent,
+                                textColor: Colors.white,
+                                fontSize: 16.0);
+                          } else {
+                            //FsQuestionListFetch裡面有東西
+                            fetchFsQuestionList().then((value) {
+                              setState(() {
+                                FsQuestionListFetch = []; //clear the list first
+                                //FsQuestionListFetch add 5 questions from FsQuestionList
+                                FsQuestionListFetch.addAll(value);
+                                //random 3 questions from FsQuestionListFetch
+                                FsQuestionListFetch.shuffle();
+                                FsQuestionListFetch =
+                                    FsQuestionListFetch.sublist(0, itemCount); //取指定題數
+                                //print test
+                                print(
+                                    "FsQuestionListFetch: ${FsQuestionListFetch.length}");
+                                //print first question
+                                print(
+                                    "第一題: ${FsQuestionListFetch[0].question}");
+                                //print second question
+                                print(
+                                    "第二題: ${FsQuestionListFetch[1].question}");
+                                //print third question
+                                print(
+                                    "第三題: ${FsQuestionListFetch[2].question}");
+                                //FsQuestionListFetch.addAll(value); //add new questions
+                                //sort by addTime
+                                //FsQuestionListFetch.sort(
+                                //(a, b) => a.addTime.compareTo(b.addTime));
+                                questionForShow =
+                                    FsQuestionListFetch.last.question;
+                              });
+                            });
+                          }
+                        },
+                        style: OutlinedButton.styleFrom(
+                          shadowColor: Colors.black87,
+                          fixedSize: const Size(80, 30),
+                          primary: kBlackColor,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                          ),
+                          side: const BorderSide(width: 2, color: Colors.grey),
+                        ),
+                      ),
                     ],
                   ),
                 ),

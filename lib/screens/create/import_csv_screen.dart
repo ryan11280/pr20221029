@@ -83,6 +83,9 @@ class _importCsvScreenState extends State<importCsvScreen> {
                   children: [
                     ElevatedButton(
                       onPressed: () async {
+                        Fluttertoast.showToast(
+                          msg: "importing...",
+                        );
                         //url = controller.text.toString();
                         print("Screen輸入url: $url");
                         //https://stackoverflow.com/questions/64088655/create-csv-file-to-read-from-internet
@@ -112,7 +115,7 @@ class _importCsvScreenState extends State<importCsvScreen> {
                               gravity: ToastGravity.BOTTOM,
                               timeInSecForIosWeb: 1,
                               backgroundColor: Colors.black,
-                              textColor: Colors.grey,
+                              textColor: Colors.red,
                               fontSize: 16.0);
                         }
                         //print("screen端 第2題解答: ${result.correctAnswer}");
@@ -123,22 +126,22 @@ class _importCsvScreenState extends State<importCsvScreen> {
                     ElevatedButton(
                       onPressed: () async {
                         Fluttertoast.showToast(
-                          msg: "用我的",
+                          msg: "importing...",
                         );
                         print("用我的");
                         try {
                           //固定url
-                          url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQr0zMomaIB4k4Vypk1h1WtM8Er-PS7j5CL_eqvCD_vWGw_27CeWpu9uGMx-SIvTxkeyiVWGg1nslVG/pub?output=csv';
-                          var result = await csvToList(url.toString());
+                          url =
+                              'https://docs.google.com/spreadsheets/d/e/2PACX-1vQr0zMomaIB4k4Vypk1h1WtM8Er-PS7j5CL_eqvCD_vWGw_27CeWpu9uGMx-SIvTxkeyiVWGg1nslVG/pub?output=csv';
+                          GsQuestionListImport = [];
+                          GsQuestionListImport = await csvToList(url.toString());
                           //var result2 = await GsGetDataFromGoogleSheet();
                           //print("result: $result");
-                          print("Screen端: 試算表上的題目數量: ${result.length}");
-                          print("Screen端: 最新一題題目: ${result.last.questionName}");
-                          print(
-                              "Screen端: 最新一題解答: 選項${result.last.correctAnswer}");
-                          print("Screen端: 最新一題新增時間: ${result.last.addTime}");
+                          print("Screen端: 試算表上的題目數量: ${GsQuestionListImport.length}");
+                          print("Screen端: 最新一題題目: ${GsQuestionListImport.last.questionName}");
+                          print("Screen端: 最新一題新增時間: ${GsQuestionListImport.last.addTime}");
                           Fluttertoast.showToast(
-                              msg: "Done!, 匯入了${result.length}個題目",
+                              msg: "Done!, 匯入了${GsQuestionListImport.length}個題目",
                               toastLength: Toast.LENGTH_SHORT,
                               gravity: ToastGravity.BOTTOM,
                               timeInSecForIosWeb: 1,
@@ -166,17 +169,21 @@ class _importCsvScreenState extends State<importCsvScreen> {
                           msg: "刷新頁面",
                         );
                         print("刷新頁面");
-                        setState(() {});
+                        setState(() {}); //刷新頁面
                       },
                       child: Text('Refresh'),
                     ),
                     ElevatedButton(
                       onPressed: () async {
                         Fluttertoast.showToast(
-                          msg: "刷新頁面",
+                          msg: "uploading...",
                         );
+                        setState(() {
+                        }); //刷新頁面
                         print("上傳至Firebase");
                         //將題目上傳至firebase
+                        print(
+                            "GsQuestionListImport.length: ${GsQuestionListImport.length}");
                         for (var i = 0; i < GsQuestionListImport.length; i++) {
                           await FsCreateQuestion(
                             question:
@@ -207,7 +214,7 @@ class _importCsvScreenState extends State<importCsvScreen> {
             Container(
               child: Flexible(
                 child: FutureBuilder(
-                  future: csvToList(url),
+                  future: csvToList(url), //csvToList(url) 先不要？
                   builder: (BuildContext context,
                       AsyncSnapshot<List<GsQuestionSheets>> snapshot) {
                     //display GsQuestionListNew2 with listview

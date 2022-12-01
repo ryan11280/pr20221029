@@ -12,7 +12,7 @@ import 'dart:convert' as convert;
 //CSV
 Future<List<GsQuestionSheets>> csvToList(url) async {
   print("進csvToList");
-  GsQuestionListNew2 = [];
+  GsQuestionListNew2 = []; //清空list
   //url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQr0zMomaIB4k4Vypk1h1WtM8Er-PS7j5CL_eqvCD_vWGw_27CeWpu9uGMx-SIvTxkeyiVWGg1nslVG/pub?gid=0&single=true&output=csv";
   print("csvToList函式 接收到的url: $url");
   dynamic csvfile;

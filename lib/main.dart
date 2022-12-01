@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 import 'package:pr20221029/routes/app_routes.dart';
 import 'package:pr20221029/screens/splash_screen.dart';
 import 'configs/themes/app_dark_theme.dart';
-import 'data_uploader_screen.dart';
+
 
 void main() async{ //1115改future
   WidgetsFlutterBinding.ensureInitialized();//

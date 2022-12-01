@@ -4,7 +4,7 @@ import 'package:pr20221029/models/FsModel.dart';
 
 //fetch data from firestore then return a FsQuestionList model list 1123
 Future<List<FsQuestionList>> fetchFsQuestionList() async {
-  print("執行讀題 fetchFsQuestionList...");
+  print("FsService: 執行讀題 fetchFsQuestionList...");
   await Firebase.initializeApp();
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final CollectionReference _questionCollection =
@@ -14,7 +14,7 @@ Future<List<FsQuestionList>> fetchFsQuestionList() async {
   _querySnapshot.docs.forEach((doc) {
     FsQuestionListFetch.add(FsQuestionList.fromMap(doc.data()));
   });
-  print('FsQuestionListFetch.length = ${FsQuestionListFetch.length}');
+  print('FsService: FsQuestionListFetch.length = ${FsQuestionListFetch.length}');
   return FsQuestionListFetch; //直接傳回model list
 }
 
@@ -86,15 +86,14 @@ Future FsCreateQuestion(
     required String answer3,
     required String answer4,
     required correctAnswer}) async {
-  print("進入FsCreateQuestion");
   await Firebase.initializeApp();
   final CollectionReference questionCollection =
-      FirebaseFirestore.instance.collection('questionListFirebase');
+      FirebaseFirestore.instance.collection('questionListFirebase'); //目標collection
   final QuerySnapshot questionSnapshot = await questionCollection.get();
   final List<DocumentSnapshot> questionDocuments = questionSnapshot.docs;
-  print("Fs現有題庫數量：${questionDocuments.length}");
+  print("FsCreateQuestion: Fs現有題庫數量：${questionDocuments.length}");
   //int questionNumber = questionDocuments.length + 1;
-  var currentTime = DateTime.now();
+  var currentTime = DateTime.now(); //取得現在時間
   //print("現在新增 = $questionNumber");
   await questionCollection
       .add({
@@ -109,7 +108,7 @@ Future FsCreateQuestion(
         //'quizBook'
       })
       .then((value) => print("題目新增成功，id = ${value.id}"))
-      .catchError((error) => print("Failed to add user: $error"));
+      .catchError((error) => print("Failed to add Question: $error"));
 }
 
 /*

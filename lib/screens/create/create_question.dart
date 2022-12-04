@@ -32,7 +32,12 @@ class MyStatefulWidget extends StatefulWidget {
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   SelectedEditAnswer? _selectedEditAnswer = SelectedEditAnswer.answer1; //預設選項一
   final controllerList = List.generate(6, (index) => TextEditingController());
-  dynamic question = "", answer1="", answer2="", answer3="", answer4="", correctAnswer;
+  dynamic question = "",
+      answer1 = "",
+      answer2 = "",
+      answer3 = "",
+      answer4 = "",
+      correctAnswer;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +48,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         backgroundColor: kGrayColor,
         title: const Text(
           '題目製作頁',
-          style: TextStyle(fontWeight: FontWeight.w200),
+          style: TextStyle(fontWeight: FontWeight.w200, fontSize: 25),
         ),
         actions: <Widget>[
           Padding(
@@ -68,12 +73,15 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 Container(
                   child: Column(
                     children: [
-                      Text("Your question",
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text("您的題目",
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 30)),
+                              fontWeight: FontWeight.bold, fontSize: 25)),
                       SizedBox(height: 25),
                       Padding(
-                        padding: const EdgeInsets.only(left:16.0,right:16.0),
+                        padding: const EdgeInsets.only(left: 16.0, right: 16.0),
                         child: TextField(
                           controller: controllerList[0],
                           onChanged: (value) {
@@ -95,9 +103,9 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 Container(
                   child: Column(
                     children: [
-                      Text("Your answers",
+                      Text("您的選項",
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 30)),
+                              fontWeight: FontWeight.bold, fontSize: 25)),
                       ListTile(
                         title: TextField(
                           controller: controllerList[1],
@@ -208,7 +216,16 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      ElevatedButton(
+                      OutlinedButton(
+                        style: OutlinedButton.styleFrom(
+                          shadowColor: Colors.black87,
+                          fixedSize: const Size(90, 30),
+                          primary: kBlackColor,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                          ),
+                          side: const BorderSide(width: 2, color: Colors.grey),
+                        ),
                         onPressed: () {
                           Fluttertoast.showToast(
                               msg: "重新載入本頁面",
@@ -222,7 +239,16 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                         },
                         child: const Text('重新輸入'),
                       ),
-                      ElevatedButton(
+                      OutlinedButton(
+                        style: OutlinedButton.styleFrom(
+                          shadowColor: Colors.black87,
+                          fixedSize: const Size(90, 30),
+                          primary: kBlackColor,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                          ),
+                          side: const BorderSide(width: 2, color: Colors.grey),
+                        ),
                         onPressed: () async {
                           //沒填完不給傳
                           if (question == "" ||
@@ -269,62 +295,145 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                             Get.offAll(() => radioTest());
                           }
                         },
-                        child: const Text('送上Fs'),
+                        child: const Text('送上題庫'),
                       ),
                     ],
                   ),
                 ),
                 Container(
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      ElevatedButton(
-                        onPressed: () async {
-                          Fluttertoast.showToast(
-                            msg: "跳轉至讀入CSV頁",
-                          );
-                          Get.offAll(() => importCsvScreen());
-                        },
-                        child: const Text('Gs匯入csv'),
-                      ),
-                      ElevatedButton(
-                        onPressed: () async {
-                          var questionListLength =
-                          await FsCheckQuestionsNumber();
-                          //check questionList is empty or not
-                          if (questionListLength == 0) {
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        OutlinedButton(
+                          style: OutlinedButton.styleFrom(
+                            shadowColor: Colors.black87,
+                            fixedSize: const Size(90, 30),
+                            primary: kBlackColor,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(18.0),
+                            ),
+                            side:
+                                const BorderSide(width: 2, color: Colors.grey),
+                          ),
+                          onPressed: () async {
                             Fluttertoast.showToast(
-                                msg: "Fs題庫是空的, 請先上傳或匯入題目",
-                                toastLength: Toast.LENGTH_SHORT,
-                                gravity: ToastGravity.BOTTOM,
-                                timeInSecForIosWeb: 1,
-                                backgroundColor: Colors.redAccent,
-                                textColor: Colors.white,
-                                fontSize: 16.0);
-                          } else {
+                              msg: "跳轉至讀入CSV頁",
+                            );
+                            Get.offAll(() => importCsvScreen());
+                          },
+                          child: const Text('匯入題目'),
+                        ),
+                        OutlinedButton(
+                          style: OutlinedButton.styleFrom(
+                            shadowColor: Colors.black87,
+                            fixedSize: const Size(90, 30),
+                            primary: kBlackColor,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(18.0),
+                            ),
+                            side:
+                                const BorderSide(width: 2, color: Colors.grey),
+                          ),
+                          onPressed: () async {
+                            var questionListLength =
+                                await FsCheckQuestionsNumber();
+                            //check questionList is empty or not
+                            if (questionListLength == 0) {
+                              Fluttertoast.showToast(
+                                  msg: "Fs題庫是空的, 請先上傳或匯入題目",
+                                  toastLength: Toast.LENGTH_SHORT,
+                                  gravity: ToastGravity.BOTTOM,
+                                  timeInSecForIosWeb: 1,
+                                  backgroundColor: Colors.redAccent,
+                                  textColor: Colors.white,
+                                  fontSize: 16.0);
+                            } else {
+                              Fluttertoast.showToast(
+                                  msg: "顯示目前題庫",
+                                  toastLength: Toast.LENGTH_SHORT,
+                                  gravity: ToastGravity.BOTTOM,
+                                  timeInSecForIosWeb: 1,
+                                  backgroundColor: Colors.grey,
+                                  textColor: Colors.white,
+                                  fontSize: 16.0);
+                              var questionListAll = []; //暫存所有題目
+                               await fetchFsQuestionList().then((value) {
+                                setState(() {
+                                  questionListAll = []; //clear the list
+                                  questionListAll.addAll(value);
+                                });
+                              });
+                              setupAlertDialoadContainer() {
+                                return Container(
+                                  height: 600.0,
+                                  width: 300.0,
+                                  child: ListView.builder(
+                                    itemCount: int.tryParse(
+                                        FsCheckQuestionsNumber().toString()),
+                                    //題庫數量
+                                    itemBuilder:
+                                        (BuildContext context, int index) {
+                                      return ListTile(
+                                        title: Text(
+                                            "Q${index+1}: ${questionListAll[index].question}"),
+                                      );
+                                    },
+                                  ),
+                                );
+                              };
+                              showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      title: Text('目前題庫有 ${questionListAll.length} 題'),
+                                      content: setupAlertDialoadContainer(),
+                                      actions: <Widget>[
+                                        TextButton(
+                                          child: const Text('好的'),
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                        ),
+                                      ],
+                                    );
+                                  });
+                            }
+                          },
+                          child: const Text('題庫查詢'),
+                        ),
+                        OutlinedButton(
+                          style: OutlinedButton.styleFrom(
+                            shadowColor: Colors.black87,
+                            fixedSize: const Size(90, 30),
+                            primary: kBlackColor,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(18.0),
+                            ),
+                            side:
+                                const BorderSide(width: 2, color: Colors.grey),
+                          ),
+                          onPressed: () async {
                             Fluttertoast.showToast(
-                                msg: "目前Fs上有$questionListLength個題目",
+                                msg: "清空Fs上的題目",
                                 toastLength: Toast.LENGTH_SHORT,
                                 gravity: ToastGravity.BOTTOM,
                                 timeInSecForIosWeb: 1,
                                 backgroundColor: Colors.grey,
                                 textColor: Colors.white,
                                 fontSize: 16.0);
-                          }
-                        },
-                        child: const Text('查Fs題數'),
-                      ),
-                      ElevatedButton(
-                        onPressed: () async {
-                          FsDeleteCollection();
-                          Fluttertoast.showToast(
-                            msg: "清空Fs上的題目",
-                          );
-                        },
-                        child: const Text('清空Fs'),
-                      ),
-                    ]
-                  ),
+                            FsDeleteCollection();
+                            Fluttertoast.showToast(
+                                msg: "Fs上的題目已清空",
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.BOTTOM,
+                                timeInSecForIosWeb: 1,
+                                backgroundColor: Colors.greenAccent,
+                                textColor: Colors.white,
+                                fontSize: 16.0);
+                          },
+                          child: const Text('清空題庫'),
+                        ),
+                      ]),
                 ),
               ],
             ),
@@ -334,5 +443,5 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     );
   }
 
-  //載入後彈窗
+//載入後彈窗
 }

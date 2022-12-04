@@ -3,13 +3,13 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:pr20221029/models/GsModel2.dart';
 import 'package:pr20221029/screens/create/create_question.dart';
 import 'package:get/get.dart';
-import 'package:file_picker/file_picker.dart';
 import 'package:csv/csv.dart';
 import 'package:http/http.dart' as http;
 import 'dart:io';
 import 'package:pr20221029/services/GsService.dart';
 
 import '../../configs/configs.dart';
+import '../../configs/themes/app_colors.dart';
 import '../../models/GsModel.dart';
 import '../../services/FsService.dart';
 import '../quiz/GsScreen.dart';
@@ -34,7 +34,8 @@ class _importCsvScreenState extends State<importCsvScreen> {
     return Material(
         child: Scaffold(
       appBar: AppBar(
-        title: Text('從Google Sheet匯入題目'),
+        backgroundColor: kGrayColor,
+        title: Text('從Google試算表匯入題目'),
         actions: <Widget>[
           Padding(
             padding: const EdgeInsets.only(right: 25.0),
@@ -57,7 +58,8 @@ class _importCsvScreenState extends State<importCsvScreen> {
               padding: const EdgeInsets.all(8.0),
               child: Container(
                   child: Text(
-                      '依照格式建立Google試算表文件後\n\n檔案=>共用=>發布到網路=>選擇csv格式=>將網址貼入下欄')),
+                      '依照格式建立Google試算表文件後\n'
+                          '\n檔案=>共用=>發布到網路=>選擇csv格式=>將網址貼入下欄')),
             ),
             SizedBox(height: 15),
             Container(
@@ -73,7 +75,7 @@ class _importCsvScreenState extends State<importCsvScreen> {
                     },
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
-                      labelText: '請輸入CSV網址',
+                      labelText: '請輸入試算表的CSV網址',
                     ),
                   ),
                 ),
@@ -81,7 +83,16 @@ class _importCsvScreenState extends State<importCsvScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    ElevatedButton(
+                    OutlinedButton(
+                      style: OutlinedButton.styleFrom(
+                        shadowColor: Colors.black87,
+                        fixedSize: const Size(80, 30),
+                        primary: kBlackColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18.0),
+                        ),
+                        side: const BorderSide(width: 2, color: Colors.grey),
+                      ),
                       onPressed: () async {
                         Fluttertoast.showToast(
                           msg: "importing...",
@@ -123,7 +134,16 @@ class _importCsvScreenState extends State<importCsvScreen> {
                       },
                       child: Text('Import'),
                     ),
-                    ElevatedButton(
+                    OutlinedButton(
+                      style: OutlinedButton.styleFrom(
+                        shadowColor: Colors.black87,
+                        fixedSize: const Size(80, 30),
+                        primary: kBlackColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18.0),
+                        ),
+                        side: const BorderSide(width: 2, color: Colors.grey),
+                      ),
                       onPressed: () async {
                         Fluttertoast.showToast(
                           msg: "importing...",
@@ -163,17 +183,34 @@ class _importCsvScreenState extends State<importCsvScreen> {
                       },
                       child: Text('Me'),
                     ),
-                    ElevatedButton(
+                    OutlinedButton(
+                      style: OutlinedButton.styleFrom(
+                        shadowColor: Colors.black87,
+                        fixedSize: const Size(90, 30),
+                        primary: kBlackColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18.0),
+                        ),
+                        side: const BorderSide(width: 2, color: Colors.grey),
+                      ),
                       onPressed: () async {
                         Fluttertoast.showToast(
                           msg: "刷新頁面",
                         );
-                        print("刷新頁面");
-                        setState(() {}); //刷新頁面
+                        print("重做");
                       },
                       child: Text('Refresh'),
                     ),
-                    ElevatedButton(
+                    OutlinedButton(
+                      style: OutlinedButton.styleFrom(
+                        shadowColor: Colors.black87,
+                        fixedSize: const Size(80, 30),
+                        primary: kBlackColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18.0),
+                        ),
+                        side: const BorderSide(width: 2, color: Colors.grey),
+                      ),
                       onPressed: () async {
                         Fluttertoast.showToast(
                           msg: "uploading...",
@@ -223,7 +260,7 @@ class _importCsvScreenState extends State<importCsvScreen> {
                       return ListView.builder(
                         itemCount: snapshot.data!.length,
                         itemBuilder: (context, index) {
-                          //把question, answer1存到GsQuestionListImportList上
+                          //把question, answer1存到GsQuestionListImport上
                           GsQuestionListImport.add(snapshot.data![index]);
                           return Card(
                             child: ListTile(
@@ -231,6 +268,7 @@ class _importCsvScreenState extends State<importCsvScreen> {
                                   Text("${snapshot.data![index].questionName}"),
                               subtitle: Text(
                                   "A: 選項${snapshot.data![index].correctAnswer}"),
+                              //顯示正確答案對應的選項？todo
                               trailing: Text(snapshot.data![index].addTime),
                             ),
                           );

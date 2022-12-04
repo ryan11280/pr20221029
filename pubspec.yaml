@@ -23,7 +23,6 @@ dependencies:
   xen_popup_card: ^0.0.1 #彈出視窗 1108midnight
   http: ^0.13.3 # 抓取GoogleSheets資料 https://www.syncfusion.com/kb/12826/how-to-get-the-data-from-google-sheet-and-load-it-to-the-flutter-calendar-sfcalendar
   fluttertoast: ^8.1.1 #彈出訊息
-  file_picker: ^5.2.2 #檔案選擇
   csv: ^5.0.1 #讀取csv檔案
 
 dev_dependencies:

@@ -1,7 +1,10 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:pr20221029/controllers/question_controller.dart';
+import 'package:pr20221029/controllers/score_controller.dart';
 import 'package:pr20221029/screens/quiz/scoreformal.dart';
 import '../../configs/themes/app_colors.dart';
 import '../../models/FsModel.dart';
@@ -24,11 +27,15 @@ class _replyState extends State<reply> {
     //畫面載入後動作
     //print("reply initState載入");
     var questionListLength = FsCheckQuestionsNumber();
-    int itemCount = 3; //本次考題數量
+    int itemCount = 3; //該次考題數量
     fetchFsQuestionList().then((value) {
       setState(() {
         FsQuestionListFetch = []; //clear the list
         FsQuestionListFetch.addAll(value);
+        int randomIndex = Random().nextInt(FsQuestionListFetch.length); //隨機取得一個index
+        //建立10題考試題目list
+
+        //test
         //FsQuestionsList sort by addTime
         FsQuestionListFetch.sort((a, b) => a.addTime.compareTo(b.addTime));
         FsQuestionListFetch.shuffle(); //打亂List, 因為直接測試顯示才放這

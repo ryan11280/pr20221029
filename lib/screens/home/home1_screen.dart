@@ -11,6 +11,12 @@ import '../about/about_screen.dart';
 import '../login/login_screen.dart';
 import '../record/record.dart';
 
+//for global variables test.
+class Global extends GetxController {
+  RxInt quizCount = 0.obs;
+}
+
+
 void main() => runApp(MaterialApp());
 
 class Home extends StatefulWidget {
@@ -40,10 +46,10 @@ class HomeState extends State<Home> {
                       "Home",
                       style: GoogleFonts.acme(
                           textStyle: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black87,
-                            fontSize: 40,
-                          )),
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black87,
+                        fontSize: 40,
+                      )),
                     ),
                     SizedBox(
                       height: 20,
@@ -63,17 +69,17 @@ class HomeState extends State<Home> {
                     Row(
                       children: [
                         //檢查登入資訊，避免無法取得圖片錯誤1121
-                        if(FirebaseAuth.instance.currentUser!.photoURL != null)
+                        if (FirebaseAuth.instance.currentUser!.photoURL != null)
                           CircleAvatar(
-                            backgroundImage: NetworkImage(FirebaseAuth.instance.currentUser!.photoURL!),
+                            backgroundImage: NetworkImage(
+                                FirebaseAuth.instance.currentUser!.photoURL!),
                             radius: 30,
                           )
-                        else(
-                          const CircleAvatar(
+                        else
+                          (const CircleAvatar(
                             radius: 30,
                             child: Icon(Icons.person),
-                          )
-                        ),
+                          )),
                         SizedBox(
                           width: 10,
                         ),
@@ -82,21 +88,27 @@ class HomeState extends State<Home> {
                           children: [
                             Text(
                               //check displayName is null or not 1121
-                              FirebaseAuth.instance.currentUser!.displayName != null ? FirebaseAuth.instance.currentUser!.displayName! : "No Name",
+                              FirebaseAuth.instance.currentUser!.displayName !=
+                                      null
+                                  ? FirebaseAuth
+                                      .instance.currentUser!.displayName!
+                                  : "No Name",
                               style: GoogleFonts.alice(
                                   textStyle: TextStyle(
-                                    color: Colors.black87,
-                                    fontSize: 18,
-                                  )),
+                                color: Colors.black87,
+                                fontSize: 18,
+                              )),
                             ),
                             Text(
                               //check email is null or not 1121
-                              FirebaseAuth.instance.currentUser!.email != null ? FirebaseAuth.instance.currentUser!.email! : "No Email",
+                              FirebaseAuth.instance.currentUser!.email != null
+                                  ? FirebaseAuth.instance.currentUser!.email!
+                                  : "No Email",
                               style: GoogleFonts.alice(
                                   textStyle: TextStyle(
-                                    color: Colors.black87,
-                                    fontSize: 14,
-                                  )),
+                                color: Colors.black87,
+                                fontSize: 14,
+                              )),
                             ),
                           ],
                         )
@@ -113,7 +125,7 @@ class HomeState extends State<Home> {
                       print("按下: 返回登入頁");
                       //logout
                       FirebaseAuth.instance.signOut();
-                      Get.offAll(()=>googleLoginPage());
+                      Get.offAll(() => googleLoginPage());
                     },
                   ),
                 )
@@ -131,13 +143,7 @@ class HomeState extends State<Home> {
 }
 
 class GridDashboard extends StatelessWidget {
-  Items item1 =
-  Items(title: "開始\n測驗",
-      subtitle: "Start",
-      event: "",
-      img: ""
-
-  );
+  Items item1 = Items(title: "開始\n測驗", subtitle: "Start", event: "", img: "");
 
   Items item2 = Items(
     title: "製作\n題目",
@@ -170,7 +176,6 @@ class GridDashboard extends StatelessWidget {
     ];
 
     return Flexible(
-
       child: GridView.count(
           childAspectRatio: 1.0,
           padding: EdgeInsets.only(left: 16, right: 16),
@@ -184,10 +189,10 @@ class GridDashboard extends StatelessWidget {
                   print("${data.title} 已被按下！");
                   //Get.offAll(page) //跳轉應放於後面
                   //個別頁面跳轉 by 1108加班
-                  if(data.title == "開始\n測驗"){
+                  if (data.title == "開始\n測驗") {
                     //check questionListLength is null or not
                     var questionListLength = await FsCheckQuestionsNumber();
-                    if(questionListLength == 0){
+                    if (questionListLength == 0) {
                       Fluttertoast.showToast(
                           msg: "Fs題庫是空的, 請先製作題目",
                           toastLength: Toast.LENGTH_SHORT,
@@ -196,24 +201,21 @@ class GridDashboard extends StatelessWidget {
                           backgroundColor: Colors.redAccent,
                           textColor: Colors.white,
                           fontSize: 16.0);
+                    } else {
+                      Get.offAll(() => reply());
                     }
-                    else{
-                      Get.offAll(()=>reply());
-                    }
-                  }
-                  else if(data.title == "製作\n題目"){
-                    Get.offAll(()=>radioTest());
-                  }
-                  else if(data.title == "測驗\n紀錄"){
-                    Get.offAll(()=>records());
-                  }
-                  else if(data.title == "關於\n我們"){
-                    Get.offAll(()=>FooterPage());
+                  } else if (data.title == "製作\n題目") {
+                    Get.offAll(() => radioTest());
+                  } else if (data.title == "測驗\n紀錄") {
+                    Get.offAll(() => records());
+                  } else if (data.title == "關於\n我們") {
+                    Get.offAll(() => FooterPage());
                   }
                 },
                 child: Container(
                   decoration: BoxDecoration(
-                      color: kHomeButtonColor, borderRadius: BorderRadius.circular(30)),
+                      color: kHomeButtonColor,
+                      borderRadius: BorderRadius.circular(30)),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
@@ -224,9 +226,9 @@ class GridDashboard extends StatelessWidget {
                         data.title!,
                         style: GoogleFonts.openSans(
                             textStyle: TextStyle(
-                              color: kHomekeyColor,
-                              fontSize: 30,
-                            )),
+                          color: kHomekeyColor,
+                          fontSize: 30,
+                        )),
                       ),
                       SizedBox(
                         height: 8,

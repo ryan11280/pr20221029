@@ -155,6 +155,26 @@ class _importCsvScreenState extends State<importCsvScreen> {
                               'https://docs.google.com/spreadsheets/d/e/2PACX-1vQr0zMomaIB4k4Vypk1h1WtM8Er-PS7j5CL_eqvCD_vWGw_27CeWpu9uGMx-SIvTxkeyiVWGg1nslVG/pub?output=csv';
                           GsQuestionListImport = [];
                           GsQuestionListImport = await csvToList(url.toString());
+                          //用迴圈把每一題送上firebase
+                          for (var i = 0; i < GsQuestionListImport.length; i++) {
+                            //await Future.delayed(const Duration(milliseconds: 500));
+                            await FsCreateQuestion(
+                              question:
+                              GsQuestionListImport[i].questionName.toString(),
+                              answer1: GsQuestionListImport[i].answer1.toString(),
+                              answer2: GsQuestionListImport[i].answer2.toString(),
+                              answer3: GsQuestionListImport[i].answer3.toString(),
+                              answer4: GsQuestionListImport[i].answer4.toString(),
+                              correctAnswer: GsQuestionListImport[i]
+                                  .correctAnswer
+                                  .toString(),
+                            );
+                          }
+                          Fluttertoast.showToast(
+                            msg: "Done！本次新增了${GsQuestionListImport.length}題",
+                          );
+                          print("上傳完成！本次新增了${GsQuestionListImport.length}題");
+
                           //var result2 = await GsGetDataFromGoogleSheet();
                           //print("result: $result");
                           print("Screen端: 試算表上的題目數量: ${GsQuestionListImport.length}");
@@ -195,7 +215,7 @@ class _importCsvScreenState extends State<importCsvScreen> {
                       ),
                       onPressed: () async {
                         Fluttertoast.showToast(
-                          msg: "刷新頁面",
+                          msg: "沒事",
                         );
                         print("重做");
                       },
@@ -222,6 +242,7 @@ class _importCsvScreenState extends State<importCsvScreen> {
                         print(
                             "GsQuestionListImport.length: ${GsQuestionListImport.length}");
                         for (var i = 0; i < GsQuestionListImport.length; i++) {
+                          //await Future.delayed(const Duration(milliseconds: 500));
                           await FsCreateQuestion(
                             question:
                                 GsQuestionListImport[i].questionName.toString(),

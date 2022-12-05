@@ -369,6 +369,7 @@ class _replyState extends State<reply> {
                                   backgroundColor: Colors.greenAccent,
                                   textColor: Colors.white,
                                   fontSize: 16.0);
+                              ifAnswered();
                               //quizCount++;
                             } else {
                               setState(() {

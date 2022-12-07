@@ -8,7 +8,9 @@ import '../home/home1_screen.dart';
 import 'components/body.dart';
 
 class scorefomal extends StatefulWidget {
-  const scorefomal({Key? key}) : super(key: key);
+  final int? score;
+
+  scorefomal({Key? key, this.score}) : super(key: key);
 
   @override
   State<scorefomal> createState() => _scorefomalState();
@@ -22,23 +24,14 @@ class _scorefomalState extends State<scorefomal> {
         title: const Text('分數'),
         backgroundColor: kGrayColor,
         actions: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(right: 25.0),
-            child: IconButton(
-              icon: Icon(Icons.home, color: Colors.white, size: 30.0),
-              onPressed: () {
-                Get.offAll(() => Home());
-                // do something
-              },
-            ),
-          )
+
         ],
       ),
       backgroundColor: kGrayColor, //ojoj
       body: Column(
         children: [
           SizedBox(
-            height: 30,
+            height: 100,
           ),
           Container(
             width: 250,
@@ -55,15 +48,32 @@ class _scorefomalState extends State<scorefomal> {
           SizedBox(
             height: 30,
           ),
-
           Container(
-            alignment: Alignment.center,
-
+              alignment: Alignment.center,
               margin: EdgeInsets.all(50),
-            child: Text("score here",
-              style: TextStyle(fontSize:50 ),)
-
+              child: Text(
+                "${widget.score}",
+                style: TextStyle(fontSize: 100),
+              )),
+          SizedBox(height: 100),
+          OutlinedButton(
+            child: const Text('回首頁',
+                style: TextStyle(fontSize: 20),
+                ),
+            onPressed: () {
+              Get.offAll(() => Home());
+            },
+            style: OutlinedButton.styleFrom(
+              shadowColor: Colors.black87,
+              fixedSize: const Size(130, 100),
+              primary: kBlackColor,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(100.0),
+              ),
+              side:
+              const BorderSide(width: 2, color: Colors.grey),
             ),
+          ),
         ],
       ),
     );

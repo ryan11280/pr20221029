@@ -22,9 +22,13 @@ class reply extends StatefulWidget {
 }
 
 class _replyState extends State<reply> {
-  List<FsQuestionList>quiz = []; //當次考題
-  int itemCount = 10; //該次考題庫
-  int quizLimit = 3;
+  List<FsQuestionList> quiz = []; //當次考題
+  late int quizLimit;  //一次考幾題
+  int quizIndex = 0; //目前考到第幾題
+  int score = 0; //分數
+  //建立0 ~ itemCount的隨機整數index
+  List<int> randomIndex = List<int>.generate(10, (i) => i)..shuffle();
+
   //int quizCount = 0;
   //create a global variable
   final Global global = Get.put(Global()); //全域變數
@@ -32,6 +36,8 @@ class _replyState extends State<reply> {
   @override
   initState() {
     super.initState();
+    quizLimit = 3;  //一次考幾題
+    quizIndex = 0; //目前考到第幾題
     //畫面load後動作
     //print("reply initState載入");
     var questionListLength = FsCheckQuestionsNumber();
@@ -39,37 +45,48 @@ class _replyState extends State<reply> {
     refreshQuestion();
   }
 
-  void refreshQuestion(){
+  //下題刷新題目
+  void refreshQuestion2() {
+    setState(() {
+      questionForShow = quiz.last.question;
+      addTimeForShow = quiz.last.addTime;
+      answer1ForShow = quiz.last.answer1;
+      answer2ForShow = quiz.last.answer2;
+      answer3ForShow = quiz.last.answer3;
+      answer4ForShow = quiz.last.answer4;
+      correctAnswerForShow = quiz.last.correctAnswer;
+      //移除當前題目
+      quiz.removeLast();
+    });
+  }
+
+  //首次刷新題目
+  void refreshQuestion() {
     fetchFsQuestionList().then((value) {
       setState(() {
         FsQuestionListFetch = []; //clear the list
-        FsQuestionListFetch.addAll(value);
-
+        quiz.addAll(value);
+        quiz.shuffle(); //隨機排序
+        print("quiz.length = ${quiz.length}");
         //將考題抽入quiz list
+        /*
         for (int i = 0; i < itemCount; i++) {
           var randomIndex =
-          Random().nextInt(FsQuestionListFetch.length); //隨機取得一個index
-          quiz.add(FsQuestionListFetch[randomIndex]); //將隨機取得的index的值加入quiz
-          FsQuestionListFetch.removeAt(
-              randomIndex); //將隨機取得的index的值從FsQuestionListFetch移除
+              Random().nextInt(FsQuestionListFetch.length); //隨機取得一個index
+          quiz.add(FsQuestionListFetch[randomIndex]);//將隨機取得的index的值加入quiz
+          FsQuestionListFetch.removeAt(randomIndex); //將已經抽過的題目從FsQuestionListFetch移除
         }
-        print("quiz.length = ${quiz.length}");
+        */
 
-        //test
-        //FsQuestionsList sort by addTime
-        var randomIndex =
-        Random().nextInt(FsQuestionListFetch.length); //隨機取得一個index
-        //從0~9隨機取得一個int
-        var randomInt = Random().nextInt(9);
-        FsQuestionListFetch.sort((a, b) => a.addTime.compareTo(b.addTime));
-        FsQuestionListFetch.shuffle(); //打亂List, 因為直接測試顯示才放這
-        questionForShow = quiz[randomInt].question;
-        addTimeForShow = quiz[randomInt].addTime;
-        answer1ForShow = quiz[randomInt].answer1;
-        answer2ForShow = quiz[randomInt].answer2;
-        answer3ForShow = quiz[randomInt].answer3;
-        answer4ForShow = quiz[randomInt].answer4;
-        correctAnswerForShow = quiz[randomInt].correctAnswer;
+        //FsQuestionListFetch.sort((a, b) => a.addTime.compareTo(b.addTime));
+        questionForShow = quiz[randomIndex.last].question;
+        addTimeForShow = quiz[randomIndex.last].addTime;
+        answer1ForShow = quiz[randomIndex.last].answer1;
+        answer2ForShow = quiz[randomIndex.last].answer2;
+        answer3ForShow = quiz[randomIndex.last].answer3;
+        answer4ForShow = quiz[randomIndex.last].answer4;
+        correctAnswerForShow = quiz[randomIndex.last].correctAnswer;
+        quiz.removeLast(); //移除題目
       });
     });
   }
@@ -77,13 +94,27 @@ class _replyState extends State<reply> {
   void ifAnswered() {
     //暫停1秒後重新載入頁面
     Future.delayed(Duration(seconds: 1), () {
-      Get.offAll(() => reply());
+      //檢查是否作答完畢
+      if (quizIndex < quizLimit) {
+        refreshQuestion2();
+        //print("第 ${quizIndex} 題結束,載入下一題...");
+        //選項顏色回復
+        defaultAnswer1Color = Colors.white;
+        defaultAnswer2Color = Colors.white;
+        defaultAnswer3Color = Colors.white;
+        defaultAnswer4Color = Colors.white;
+      } else {
+        //測驗結束 轉 成績頁面
+        print("--------測驗結束 成績: $score----------");
+        //轉到score頁面
+        Get.offAll(() => scorefomal(score: score));
+      }
     });
   }
 
   //controllerList for 文字顯示控制
   //final controllerList = List.generate(5, (index) => TextEditingController());
-  List<FsQuestionList> FsQuestionListFetch = []; //Fs上取下來的
+  List<FsQuestionList> FsQuestionListFetch = []; //Fs上取下來的 FsQuestionListFetch
   var questionForShow = "";
   var addTimeForShow = "";
   var answer1ForShow = "";
@@ -133,7 +164,8 @@ class _replyState extends State<reply> {
                         child: SingleChildScrollView(
                           scrollDirection: Axis.vertical,
                           child: Padding(
-                            padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+                            padding:
+                                const EdgeInsets.only(left: 20.0, right: 20.0),
                             child: Text(
                               questionForShow,
                               maxLines: 7,
@@ -165,38 +197,22 @@ class _replyState extends State<reply> {
                         ),
                         child: ListTile(
                           onTap: () {
-                            print("answer1ForShow: $answer1ForShow");
-                            print(
-                                "correctAnswerForShow: $correctAnswerForShow");
+                            print("第 ${quizIndex+1} 題作答結果 => 選了: $answer1ForShow, 正確答案: $correctAnswerForShow, 答對與否: ${answer1ForShow == correctAnswerForShow}");
                             //correctAnswer是數字, 無法與實際選項對應...
                             if (answer1ForShow == correctAnswerForShow) {
                               setState(() {
                                 defaultAnswer1Color = Colors.lightGreenAccent;
                               });
-                              Fluttertoast.showToast(
-                                  msg: "答對了",
-                                  toastLength: Toast.LENGTH_SHORT,
-                                  gravity: ToastGravity.BOTTOM,
-                                  timeInSecForIosWeb: 1,
-                                  backgroundColor: Colors.greenAccent,
-                                  textColor: Colors.white,
-                                  fontSize: 16.0);
-                              global.quizCount.value++;
+                              score = score + 10;
+                              quizIndex++;
                               ifAnswered();
 
                             } else {
                               setState(() {
                                 defaultAnswer1Color = Colors.redAccent;
                               });
-                              Fluttertoast.showToast(
-                                  msg: "答錯了",
-                                  toastLength: Toast.LENGTH_SHORT,
-                                  gravity: ToastGravity.BOTTOM,
-                                  timeInSecForIosWeb: 1,
-                                  backgroundColor: Colors.redAccent,
-                                  textColor: Colors.white,
-                                  fontSize: 16.0);
-                              global.quizCount.value++;
+                              //score = score - 10;
+                              quizIndex++;
                               ifAnswered();
                             }
                           },
@@ -229,37 +245,21 @@ class _replyState extends State<reply> {
                         ),
                         child: ListTile(
                           onTap: () {
-                            print("answer2ForShow: $answer2ForShow");
-                            print(
-                                "correctAnswerForShow: $correctAnswerForShow");
+                            print("第 ${quizIndex+1} 題作答結果 => 選了: $answer2ForShow, 正確答案: $correctAnswerForShow, 答對與否: ${answer2ForShow == correctAnswerForShow}");
                             //correctAnswer是數字, 無法與實際選項對應...
                             if (answer2ForShow == correctAnswerForShow) {
                               setState(() {
                                 defaultAnswer2Color = Colors.lightGreenAccent;
                               });
-                              Fluttertoast.showToast(
-                                  msg: "答對了",
-                                  toastLength: Toast.LENGTH_SHORT,
-                                  gravity: ToastGravity.BOTTOM,
-                                  timeInSecForIosWeb: 1,
-                                  backgroundColor: Colors.greenAccent,
-                                  textColor: Colors.white,
-                                  fontSize: 16.0);
-                              //quizCount++;
+                              score = score + 10;
+                              quizIndex++;
                               ifAnswered();
                             } else {
                               setState(() {
                                 defaultAnswer2Color = Colors.redAccent;
                               });
-                              Fluttertoast.showToast(
-                                  msg: "答錯了",
-                                  toastLength: Toast.LENGTH_SHORT,
-                                  gravity: ToastGravity.BOTTOM,
-                                  timeInSecForIosWeb: 1,
-                                  backgroundColor: Colors.redAccent,
-                                  textColor: Colors.white,
-                                  fontSize: 16.0);
-                              //quizCount++;
+                              //score = score - 10;
+                              quizIndex++;
                               ifAnswered();
                             }
                           },
@@ -291,37 +291,21 @@ class _replyState extends State<reply> {
                         ),
                         child: ListTile(
                           onTap: () {
-                            print("answer3ForShow: $answer3ForShow");
-                            print(
-                                "correctAnswerForShow: $correctAnswerForShow");
+                            print("第 ${quizIndex+1} 題作答結果 => 選了: $answer3ForShow, 正確答案: $correctAnswerForShow, 答對與否: ${answer3ForShow == correctAnswerForShow}");
                             //correctAnswer是數字, 無法與實際選項對應...
                             if (answer3ForShow == correctAnswerForShow) {
                               setState(() {
                                 defaultAnswer3Color = Colors.lightGreenAccent;
                               });
-                              Fluttertoast.showToast(
-                                  msg: "答對了",
-                                  toastLength: Toast.LENGTH_SHORT,
-                                  gravity: ToastGravity.BOTTOM,
-                                  timeInSecForIosWeb: 1,
-                                  backgroundColor: Colors.greenAccent,
-                                  textColor: Colors.white,
-                                  fontSize: 16.0);
-                              //quizCount++;
+                              score = score + 10;
+                              quizIndex++;
                               ifAnswered();
                             } else {
                               setState(() {
                                 defaultAnswer3Color = Colors.redAccent;
                               });
-                              Fluttertoast.showToast(
-                                  msg: "答錯了",
-                                  toastLength: Toast.LENGTH_SHORT,
-                                  gravity: ToastGravity.BOTTOM,
-                                  timeInSecForIosWeb: 1,
-                                  backgroundColor: Colors.redAccent,
-                                  textColor: Colors.white,
-                                  fontSize: 16.0);
-                              //quizCount++;
+                              //score = score - 10;
+                              quizIndex++;
                               ifAnswered();
                             }
                           },
@@ -353,37 +337,21 @@ class _replyState extends State<reply> {
                         ),
                         child: ListTile(
                           onTap: () {
-                            print("answer4ForShow: $answer4ForShow");
-                            print(
-                                "correctAnswerForShow: $correctAnswerForShow");
+                            print("第 ${quizIndex+1} 題作答結果 => 選了: $answer4ForShow, 正確答案: $correctAnswerForShow, 答對與否: ${answer4ForShow == correctAnswerForShow}");
                             //correctAnswer是數字, 無法與實際選項對應...
                             if (answer4ForShow == correctAnswerForShow) {
                               setState(() {
                                 defaultAnswer4Color = Colors.lightGreenAccent;
                               });
-                              Fluttertoast.showToast(
-                                  msg: "答對了",
-                                  toastLength: Toast.LENGTH_SHORT,
-                                  gravity: ToastGravity.BOTTOM,
-                                  timeInSecForIosWeb: 1,
-                                  backgroundColor: Colors.greenAccent,
-                                  textColor: Colors.white,
-                                  fontSize: 16.0);
+                              score = score + 10;
+                              quizIndex++;
                               ifAnswered();
-                              //quizCount++;
                             } else {
                               setState(() {
                                 defaultAnswer4Color = Colors.redAccent;
                               });
-                              Fluttertoast.showToast(
-                                  msg: "答錯了",
-                                  toastLength: Toast.LENGTH_SHORT,
-                                  gravity: ToastGravity.BOTTOM,
-                                  timeInSecForIosWeb: 1,
-                                  backgroundColor: Colors.redAccent,
-                                  textColor: Colors.white,
-                                  fontSize: 16.0);
-                              //quizCount++;
+                              //score = score - 10;
+                              quizIndex++;
                               ifAnswered();
                             }
                           },
@@ -408,10 +376,18 @@ class _replyState extends State<reply> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         OutlinedButton(
-                          child: const Text('下一題'),
+                          child: const Text('跳過'),
                           onPressed: () {
-                            //go to next question
-                            Get.offAll(() => reply());
+                            Fluttertoast.showToast(
+                                msg: "跳過此題",
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.BOTTOM,
+                                timeInSecForIosWeb: 1,
+                                backgroundColor: Colors.grey,
+                                textColor: Colors.white,
+                                fontSize: 16.0);
+                            quizIndex++;
+                            ifAnswered();
                           },
                           style: OutlinedButton.styleFrom(
                             shadowColor: Colors.black87,
@@ -447,181 +423,12 @@ class _replyState extends State<reply> {
                                         child: const Text('交卷走人'),
                                         onPressed: () {
                                           Navigator.of(context).pop();
-                                          Get.offAll(() => const scorefomal());
+                                          Get.offAll(() => scorefomal(score: score,));
                                         },
                                       ),
                                     ],
                                   );
                                 });
-                          },
-                          style: OutlinedButton.styleFrom(
-                            shadowColor: Colors.black87,
-                            fixedSize: const Size(80, 30),
-                            primary: kBlackColor,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(18.0),
-                            ),
-                            side:
-                                const BorderSide(width: 2, color: Colors.grey),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 35, // <-- SEE HERE
-                        ),
-                        OutlinedButton(
-                          child: const Text('抽題'),
-                          onPressed: () async {
-                            //check FsCheckQuestionsNumber 0?
-                            var questionListLength =
-                                await FsCheckQuestionsNumber();
-                            int itemCount = 3; //本次考題數量
-                            if (questionListLength == 0) {
-                              Fluttertoast.showToast(
-                                  msg: "Fs題庫是空的, 請先上傳或匯入題目",
-                                  toastLength: Toast.LENGTH_SHORT,
-                                  gravity: ToastGravity.BOTTOM,
-                                  timeInSecForIosWeb: 1,
-                                  backgroundColor: Colors.redAccent,
-                                  textColor: Colors.white,
-                                  fontSize: 16.0);
-                            } else {
-                              fetchFsQuestionList().then((value) {
-                                setState(() {
-                                  FsQuestionListFetch = []; //clear the list
-                                  FsQuestionListFetch.addAll(value);
-                                  //FsQuestionsList sort by addTime
-                                  FsQuestionListFetch.sort(
-                                      (a, b) => a.addTime.compareTo(b.addTime));
-                                  questionForShow =
-                                      FsQuestionListFetch.last.question;
-                                  addTimeForShow =
-                                      FsQuestionListFetch.last.addTime;
-                                  answer1ForShow =
-                                      FsQuestionListFetch.last.answer1;
-                                  answer2ForShow =
-                                      FsQuestionListFetch.last.answer2;
-                                  answer3ForShow =
-                                      FsQuestionListFetch.last.answer3;
-                                  answer4ForShow =
-                                      FsQuestionListFetch.last.answer4;
-                                  correctAnswerForShow =
-                                      FsQuestionListFetch.last.correctAnswer;
-                                });
-                              });
-                              //顯示最後一題
-                              print(
-                                  "最近新增的一題: ${FsQuestionListFetch.last.question}");
-
-                              setupAlertDialoadContainer() {
-                                FsQuestionListFetch.shuffle(); //打亂List
-                                return Container(
-                                  height: 300.0,
-                                  // Change as per your requirement
-                                  width: 300.0,
-                                  // Change as per your requirement
-                                  child: ListView.builder(
-                                    itemCount: itemCount,
-                                    //FsQuestionListFetch.length
-                                    itemBuilder:
-                                        (BuildContext context, int index) {
-                                      return ListTile(
-                                        title: Text(
-                                            "Q${index + 1}: ${FsQuestionListFetch[index].question}"),
-                                        subtitle: Text(
-                                            FsQuestionListFetch[index].addTime),
-                                      );
-                                    },
-                                  ),
-                                );
-                              }
-
-                              showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) {
-                                    return AlertDialog(
-                                      title: Text('從題庫抽了$itemCount題'),
-                                      content: setupAlertDialoadContainer(),
-                                      actions: <Widget>[
-                                        TextButton(
-                                          child: const Text('好的'),
-                                          onPressed: () {
-                                            Navigator.of(context).pop();
-                                          },
-                                        ),
-                                      ],
-                                    );
-                                  });
-
-                              Fluttertoast.showToast(
-                                  msg: "顯示本次題目",
-                                  toastLength: Toast.LENGTH_SHORT,
-                                  gravity: ToastGravity.BOTTOM,
-                                  timeInSecForIosWeb: 1,
-                                  backgroundColor: Colors.greenAccent,
-                                  textColor: Colors.white,
-                                  fontSize: 16.0);
-                            }
-                          },
-                          style: OutlinedButton.styleFrom(
-                            shadowColor: Colors.black87,
-                            fixedSize: const Size(80, 30),
-                            primary: kBlackColor,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(18.0),
-                            ),
-                            side:
-                                const BorderSide(width: 2, color: Colors.grey),
-                          ),
-                        ),
-                        OutlinedButton(
-                          child: const Text('Test'),
-                          onPressed: () async {
-                            var questionListLength =
-                                await FsCheckQuestionsNumber();
-                            int itemCount = 3; //本次考題數量
-                            if (questionListLength == 0) {
-                              Fluttertoast.showToast(
-                                  msg: "Fs題庫是空的, 請先上傳或匯入題目",
-                                  toastLength: Toast.LENGTH_SHORT,
-                                  gravity: ToastGravity.BOTTOM,
-                                  timeInSecForIosWeb: 1,
-                                  backgroundColor: Colors.redAccent,
-                                  textColor: Colors.white,
-                                  fontSize: 16.0);
-                            } else {
-                              //FsQuestionListFetch裡面有東西
-                              fetchFsQuestionList().then((value) {
-                                setState(() {
-                                  FsQuestionListFetch =
-                                      []; //clear the list first
-                                  //FsQuestionListFetch add 5 questions from FsQuestionList
-                                  FsQuestionListFetch.addAll(value);
-                                  //random 3 questions from FsQuestionListFetch
-                                  FsQuestionListFetch.shuffle();
-                                  FsQuestionListFetch =
-                                      FsQuestionListFetch.sublist(
-                                          0, itemCount); //取指定題數
-                                  //print test
-                                  print(
-                                      "FsQuestionListFetch: ${FsQuestionListFetch.length}");
-                                  //print first question
-                                  print(
-                                      "第一題: ${FsQuestionListFetch[0].question}");
-                                  //print second question
-                                  print(
-                                      "第二題: ${FsQuestionListFetch[1].question}");
-                                  //print third question
-                                  print(
-                                      "第三題: ${FsQuestionListFetch[2].question}");
-                                  //FsQuestionListFetch.addAll(value); //add new questions
-                                  //sort by addTime
-                                  //FsQuestionListFetch.sort(
-                                  //(a, b) => a.addTime.compareTo(b.addTime));
-                                  questionForShow =
-                                      FsQuestionListFetch.last.question;
-                                });
-                              });
-                            }
                           },
                           style: OutlinedButton.styleFrom(
                             shadowColor: Colors.black87,

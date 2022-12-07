@@ -228,7 +228,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                         ),
                         onPressed: () {
                           Fluttertoast.showToast(
-                              msg: "重新載入本頁面",
+                              msg: "重新來過...",
                               toastLength: Toast.LENGTH_SHORT,
                               gravity: ToastGravity.BOTTOM,
                               timeInSecForIosWeb: 1,
@@ -267,7 +267,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                                 fontSize: 16.0);
                           } else {
                             Fluttertoast.showToast(
-                                msg: "送上firebase",
+                                msg: "送上題庫...",
                                 toastLength: Toast.LENGTH_SHORT,
                                 gravity: ToastGravity.BOTTOM,
                                 timeInSecForIosWeb: 1,
@@ -340,7 +340,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                             //check questionList is empty or not
                             if (questionListLength == 0) {
                               Fluttertoast.showToast(
-                                  msg: "Fs題庫是空的, 請先上傳或匯入題目",
+                                  msg: "題庫是空的, 請先上傳或匯入題目",
                                   toastLength: Toast.LENGTH_SHORT,
                                   gravity: ToastGravity.BOTTOM,
                                   timeInSecForIosWeb: 1,
@@ -414,7 +414,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                           ),
                           onPressed: () async {
                             Fluttertoast.showToast(
-                                msg: "清空Fs上的題目",
+                                msg: "清空題庫...",
                                 toastLength: Toast.LENGTH_SHORT,
                                 gravity: ToastGravity.BOTTOM,
                                 timeInSecForIosWeb: 1,
@@ -423,7 +423,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                                 fontSize: 16.0);
                             FsDeleteCollection();
                             Fluttertoast.showToast(
-                                msg: "Fs上的題目已清空",
+                                msg: "題庫已清空",
                                 toastLength: Toast.LENGTH_SHORT,
                                 gravity: ToastGravity.BOTTOM,
                                 timeInSecForIosWeb: 1,

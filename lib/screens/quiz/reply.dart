@@ -36,7 +36,7 @@ class _replyState extends State<reply> {
   @override
   initState() {
     super.initState();
-    quizLimit = 3;  //一次考幾題
+    quizLimit = 10;  //一次考幾題
     quizIndex = 0; //目前考到第幾題
     //畫面load後動作
     //print("reply initState載入");

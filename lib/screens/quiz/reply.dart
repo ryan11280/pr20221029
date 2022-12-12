@@ -1,18 +1,11 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:http/http.dart';
-import 'package:pr20221029/controllers/question_controller.dart';
-import 'package:pr20221029/controllers/score_controller.dart';
 import 'package:pr20221029/screens/quiz/scoreformal.dart';
 import '../../configs/themes/app_colors.dart';
 import '../../models/FsModel.dart';
 import '../../services/FsService.dart';
-import '../create/create_question.dart';
 import '../home/home1_screen.dart';
-import 'components/body.dart';
 
 class reply extends StatefulWidget {
   reply({Key? key}) : super(key: key);
@@ -23,7 +16,7 @@ class reply extends StatefulWidget {
 
 class _replyState extends State<reply> {
   List<FsQuestionList> quiz = []; //當次考題
-  late int quizLimit;  //一次考幾題
+  late int quizLimit; //一次考幾題
   int quizIndex = 0; //目前考到第幾題
   int score = 0; //分數
   //建立0 ~ itemCount的隨機整數index
@@ -36,7 +29,7 @@ class _replyState extends State<reply> {
   @override
   initState() {
     super.initState();
-    quizLimit = 10;  //一次考幾題
+    quizLimit = 10; //一次考幾題
     quizIndex = 0; //目前考到第幾題
     //畫面load後動作
     //print("reply initState載入");
@@ -197,7 +190,8 @@ class _replyState extends State<reply> {
                         ),
                         child: ListTile(
                           onTap: () {
-                            print("第 ${quizIndex+1} 題作答結果 => 選了: $answer1ForShow, 正確答案: $correctAnswerForShow, 答對與否: ${answer1ForShow == correctAnswerForShow}");
+                            print(
+                                "第 ${quizIndex + 1} 題作答結果 => 選了: $answer1ForShow, 正確答案: $correctAnswerForShow, 答對與否: ${answer1ForShow == correctAnswerForShow}");
                             //correctAnswer是數字, 無法與實際選項對應...
                             if (answer1ForShow == correctAnswerForShow) {
                               setState(() {
@@ -206,7 +200,6 @@ class _replyState extends State<reply> {
                               score = score + 10;
                               quizIndex++;
                               ifAnswered();
-
                             } else {
                               setState(() {
                                 defaultAnswer1Color = Colors.redAccent;
@@ -245,7 +238,8 @@ class _replyState extends State<reply> {
                         ),
                         child: ListTile(
                           onTap: () {
-                            print("第 ${quizIndex+1} 題作答結果 => 選了: $answer2ForShow, 正確答案: $correctAnswerForShow, 答對與否: ${answer2ForShow == correctAnswerForShow}");
+                            print(
+                                "第 ${quizIndex + 1} 題作答結果 => 選了: $answer2ForShow, 正確答案: $correctAnswerForShow, 答對與否: ${answer2ForShow == correctAnswerForShow}");
                             //correctAnswer是數字, 無法與實際選項對應...
                             if (answer2ForShow == correctAnswerForShow) {
                               setState(() {
@@ -291,7 +285,8 @@ class _replyState extends State<reply> {
                         ),
                         child: ListTile(
                           onTap: () {
-                            print("第 ${quizIndex+1} 題作答結果 => 選了: $answer3ForShow, 正確答案: $correctAnswerForShow, 答對與否: ${answer3ForShow == correctAnswerForShow}");
+                            print(
+                                "第 ${quizIndex + 1} 題作答結果 => 選了: $answer3ForShow, 正確答案: $correctAnswerForShow, 答對與否: ${answer3ForShow == correctAnswerForShow}");
                             //correctAnswer是數字, 無法與實際選項對應...
                             if (answer3ForShow == correctAnswerForShow) {
                               setState(() {
@@ -337,7 +332,8 @@ class _replyState extends State<reply> {
                         ),
                         child: ListTile(
                           onTap: () {
-                            print("第 ${quizIndex+1} 題作答結果 => 選了: $answer4ForShow, 正確答案: $correctAnswerForShow, 答對與否: ${answer4ForShow == correctAnswerForShow}");
+                            print(
+                                "第 ${quizIndex + 1} 題作答結果 => 選了: $answer4ForShow, 正確答案: $correctAnswerForShow, 答對與否: ${answer4ForShow == correctAnswerForShow}");
                             //correctAnswer是數字, 無法與實際選項對應...
                             if (answer4ForShow == correctAnswerForShow) {
                               setState(() {
@@ -423,7 +419,9 @@ class _replyState extends State<reply> {
                                         child: const Text('交卷走人'),
                                         onPressed: () {
                                           Navigator.of(context).pop();
-                                          Get.offAll(() => scorefomal(score: score,));
+                                          Get.offAll(() => scorefomal(
+                                                score: score,
+                                              ));
                                         },
                                       ),
                                     ],

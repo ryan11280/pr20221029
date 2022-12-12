@@ -3,24 +3,23 @@ import 'package:pr20221029/firebase_options.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
-import '../screens/home/home1_screen.dart';
-
-class AuthController extends GetxController{
+class AuthController extends GetxController {
   @override
-  void onReady(){
+  void onReady() {
     initAuth(); //先叫這個
     super.onReady();
   }
 
-  void initAuth() async{
+  void initAuth() async {
     await Future.delayed(const Duration(seconds: 1)); //延遲1s後再跳轉 用於splash過渡
     WidgetsFlutterBinding.ensureInitialized(); //加
-    await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform,); //加options
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    ); //加options
     navigateToHome(); //再來叫到這
-
   }
 
-  void navigateToHome(){
+  void navigateToHome() {
     //Get.offAllNamed("/"); //最後叫這 用於splash過渡 暫改home
     //go to home
     Get.offAllNamed("/login"); //最後叫這

@@ -1,5 +1,4 @@
 //mixin class: 多重繼承class
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pr20221029/configs/themes/app_colors.dart';
@@ -13,7 +12,8 @@ mixin SubThemeData {
       bodyText2: TextStyle(fontWeight: FontWeight.w400),
     ));
   }
-  IconThemeData getIconTheme(){
+
+  IconThemeData getIconTheme() {
     return const IconThemeData(color: onSurfaceTextColor, size: 16);
   }
 }

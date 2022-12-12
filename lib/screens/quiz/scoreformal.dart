@@ -1,11 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pr20221029/controllers/question_controller.dart';
 import '../../configs/themes/app_colors.dart';
-import '../create/create_question.dart';
 import '../home/home1_screen.dart';
-import 'components/body.dart';
 
 class scorefomal extends StatefulWidget {
   final int? score;
@@ -23,9 +20,7 @@ class _scorefomalState extends State<scorefomal> {
       appBar: AppBar(
         title: const Text('分數'),
         backgroundColor: kGrayColor,
-        actions: <Widget>[
-
-        ],
+        actions: <Widget>[],
       ),
       backgroundColor: kGrayColor, //ojoj
       body: Column(
@@ -57,9 +52,10 @@ class _scorefomalState extends State<scorefomal> {
               )),
           SizedBox(height: 100),
           OutlinedButton(
-            child: const Text('回首頁',
-                style: TextStyle(fontSize: 20),
-                ),
+            child: const Text(
+              '回首頁',
+              style: TextStyle(fontSize: 20),
+            ),
             onPressed: () {
               Get.offAll(() => Home());
             },
@@ -70,8 +66,7 @@ class _scorefomalState extends State<scorefomal> {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(100.0),
               ),
-              side:
-              const BorderSide(width: 2, color: Colors.grey),
+              side: const BorderSide(width: 2, color: Colors.grey),
             ),
           ),
         ],

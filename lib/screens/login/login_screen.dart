@@ -24,8 +24,7 @@ class _googleLoginPageState extends State<googleLoginPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Expanded(
-                  child:
-                      Image(image: AssetImage('assets/images/qalogo.png'))),
+                  child: Image(image: AssetImage('assets/images/qalogo.png'))),
               SizedBox(height: 50),
               signInButton(),
               SizedBox(height: 30),

@@ -1,8 +1,5 @@
 import 'dart:core';
 import 'package:csv/csv.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 import 'package:pr20221029/models/GsModel.dart';
@@ -13,6 +10,7 @@ import 'dart:convert' as convert;
 Future<List<GsQuestionSheets>> csvToList(url) async {
   print("進csvToList");
   GsQuestionListNew2 = []; //清空list
+  List<GsQuestionSheets> results = [];
   //url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQr0zMomaIB4k4Vypk1h1WtM8Er-PS7j5CL_eqvCD_vWGw_27CeWpu9uGMx-SIvTxkeyiVWGg1nslVG/pub?gid=0&single=true&output=csv";
   print("csvToList函式 接收到的url: $url");
   dynamic csvfile;
@@ -24,9 +22,12 @@ Future<List<GsQuestionSheets>> csvToList(url) async {
   final csvData = CsvToListConverter().convert(csvUtf8);
   //print("\nlistCreated: $listCreated\n");
   //迴圈將csvData內容對應存入GsQuestionListNew2(List)
-
-  for(var i=1; i< csvData.length; i++){
-    GsQuestionListNew2.add(GsQuestionSheets(
+  print("csvToList函式: csvData.length = ${csvData.length}");
+  //print("第一題目: ${csvData[0][2]}, index= ${csvData.first[0]}");
+  print("最後題: ${csvData.last[2]}");
+  for (var i = 1; i < csvData.length; i++) {
+    //print(csvData[i][2].toString()); //題目
+    results.add(GsQuestionSheets(
       id: csvData[i][0].toString(),
       addTime: csvData[i][1].toString(),
       questionName: csvData[i][2].toString(),
@@ -36,7 +37,8 @@ Future<List<GsQuestionSheets>> csvToList(url) async {
       answer4: csvData[i][6].toString(),
       correctAnswer: csvData[i][7].toString(),
     ));
-  };
+  }
+  ;
   //print("Service端: csvData上目前有: ${csvData.length-1} 個題目");
   //print("csvData的0項: ${csvData[0]}");
   //[id, addTime, questionName, answer1, answer2, answer3, answer4, correctAnswer]
@@ -45,7 +47,7 @@ Future<List<GsQuestionSheets>> csvToList(url) async {
   //print("Service端: 第一題 題目: ${csvData[1][2]}");
   //print("GsQuestionListNew2 = $GsQuestionListNew2");
   //print("Service端: GsQuestionListNew2題庫長度：${GsQuestionListNew2.length}");
-  return GsQuestionListNew2;
+  return results;
 }
 
 Future<List<GsQuestionSheets>> GsGetDataFromGoogleSheet() async {

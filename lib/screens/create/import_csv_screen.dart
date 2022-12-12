@@ -7,6 +7,7 @@ import 'package:pr20221029/services/GsService.dart';
 import '../../configs/themes/app_colors.dart';
 import '../../models/GsModel.dart';
 import '../../services/FsService.dart';
+import '../quiz/GsScreen.dart';
 
 List<GsQuestionSheets> GsQuestionListImport =
     []; //共用model, 依model建立空list 放外面working!
@@ -22,12 +23,14 @@ class _importCsvScreenState extends State<importCsvScreen> {
   GsQuestionSheets? events;
   dynamic url;
   final controller = TextEditingController();
-@override
+
+  @override
   void initState() {
     // TODO: implement initState
     super.initState();
     GsQuestionListImport = []; //清空list
   }
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -102,13 +105,14 @@ class _importCsvScreenState extends State<importCsvScreen> {
                           url =
                               'https://docs.google.com/spreadsheets/d/e/2PACX-1vQr0zMomaIB4k4Vypk1h1WtM8Er-PS7j5CL_eqvCD_vWGw_27CeWpu9uGMx-SIvTxkeyiVWGg1nslVG/pub?output=csv';
                           GsQuestionListImport = [];
+                          GsQuestionListNew2 = []; //清空list++
                           GsQuestionListImport =
                               await csvToList(url.toString());
                           //用迴圈把每一題送上firebase
                           for (var i = 0;
                               i < GsQuestionListImport.length;
                               i++) {
-                            //await Future.delayed(const Duration(milliseconds: 500));
+                            //await Future.delayed(const Duration(milliseconds: 300));
                             await FsCreateQuestion(
                               question: GsQuestionListImport[i]
                                   .questionName
@@ -229,7 +233,7 @@ class _importCsvScreenState extends State<importCsvScreen> {
                       ),
                       onPressed: () async {
                         //檢查GsQuestionListImport是否有資料
-                        if(GsQuestionListImport.length == 0){
+                        if (GsQuestionListImport.length == 0) {
                           Fluttertoast.showToast(
                               msg: "沒有讀取到題目，請先匯入題庫！",
                               toastLength: Toast.LENGTH_SHORT,
@@ -238,9 +242,8 @@ class _importCsvScreenState extends State<importCsvScreen> {
                               backgroundColor: Colors.black,
                               textColor: Colors.red,
                               fontSize: 16.0);
-                        }
-                        else{
-                          try{
+                        } else {
+                          try {
                             Fluttertoast.showToast(
                               msg: "匯入中...請稍候...",
                             );
@@ -249,15 +252,22 @@ class _importCsvScreenState extends State<importCsvScreen> {
                             //將題目上傳至firebase
                             print(
                                 "GsQuestionListImport.length: ${GsQuestionListImport.length}");
-                            for (var i = 0; i < GsQuestionListImport.length; i++) {
-                              //await Future.delayed(const Duration(milliseconds: 500));
+                            for (var i = 0;
+                                i < GsQuestionListImport.length;
+                                i++) {
+                              //await Future.delayed(const Duration(milliseconds: 300));
                               await FsCreateQuestion(
-                                question:
-                                GsQuestionListImport[i].questionName.toString(),
-                                answer1: GsQuestionListImport[i].answer1.toString(),
-                                answer2: GsQuestionListImport[i].answer2.toString(),
-                                answer3: GsQuestionListImport[i].answer3.toString(),
-                                answer4: GsQuestionListImport[i].answer4.toString(),
+                                question: GsQuestionListImport[i]
+                                    .questionName
+                                    .toString(),
+                                answer1:
+                                    GsQuestionListImport[i].answer1.toString(),
+                                answer2:
+                                    GsQuestionListImport[i].answer2.toString(),
+                                answer3:
+                                    GsQuestionListImport[i].answer3.toString(),
+                                answer4:
+                                    GsQuestionListImport[i].answer4.toString(),
                                 correctAnswer: GsQuestionListImport[i]
                                     .correctAnswer
                                     .toString(),
@@ -267,8 +277,7 @@ class _importCsvScreenState extends State<importCsvScreen> {
                               msg: "Done！本次新增了${GsQuestionListImport.length}題",
                             );
                             print("上傳完成！本次新增了${GsQuestionListImport.length}題");
-                          }
-                          catch(e){
+                          } catch (e) {
                             print("匯入錯誤: $e");
                             Fluttertoast.showToast(
                                 msg: "錯誤: $e",
@@ -322,7 +331,14 @@ class _importCsvScreenState extends State<importCsvScreen> {
                                         maxLines: 10,
                                         overflow: TextOverflow.ellipsis,
                                       ),
-                                      actions: [],
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                          child: const Text('關閉'),
+                                        ),
+                                      ],
                                     );
                                   },
                                 );

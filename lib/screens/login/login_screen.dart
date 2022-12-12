@@ -3,7 +3,6 @@ import 'package:pr20221029/configs/themes/app_colors.dart';
 import 'package:pr20221029/screens/home/home1_screen.dart';
 import 'package:pr20221029/controllers/firebase_google_login_controller.dart';
 import 'package:get/get.dart';
-import 'package:flutter_signin_button/flutter_signin_button.dart';
 import '../../configs/themes/app_light_theme.dart';
 
 class googleLoginPage extends StatefulWidget {

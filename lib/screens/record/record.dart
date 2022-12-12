@@ -24,7 +24,6 @@ class records extends StatelessWidget {
               icon: Icon(Icons.home, color: Colors.white, size: 30.0),
               onPressed: () {
                 Get.offAll(() => Home());
-                // do something
               },
             ),
           )

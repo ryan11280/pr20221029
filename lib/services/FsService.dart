@@ -3,19 +3,33 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:pr20221029/models/FsModel.dart';
 import 'package:pr20221029/services/firebase_storage_service.dart';
 
+//fetch record from firestore then return a list
+Future<List> FsFetchRecords() async {
+  await Firebase.initializeApp();
+  List recordList = [];
+  QuerySnapshot querySnapshot =
+      await FirebaseFirestore.instance.collection('records').get();
+  querySnapshot.docs.forEach((element) {
+    recordList.add(element.data());
+  });
+  print(recordList[0]);
+  return recordList;
+}
+
+
 //答題紀錄 將成績傳上去
 Future<void> FsUploadScore(
-    String uid, int score) async {
+    String uid, String userName, int score) async {
   await Firebase.initializeApp();
   CollectionReference result = FirebaseFirestore.instance.collection('records');
   result.add({
     'uid': uid,
+    'userName': userName,
     'score': score,
     'time': DateTime.now().toString(), //以上傳時間為準
   });
-  print("uid: $uid, score: $score, 成績上傳完成!");
+  print("name: $userName, score: $score, 成績上傳完成!");
 }
-
 
 
 //fetch data from firestore then return a FsQuestionList model list 1123

@@ -102,7 +102,8 @@ class _replyState extends State<reply> {
         print("--------測驗結束 成績: $score----------");
         //上傳成績
         String uid = FirebaseAuth.instance.currentUser!.uid;
-        await FsUploadScore(uid, score);
+        String userName = FirebaseAuth.instance.currentUser!.displayName!;
+        await FsUploadScore(uid, userName, score);
         //轉到score頁面
         Get.offAll(() => scorefomal(score: score));
       }

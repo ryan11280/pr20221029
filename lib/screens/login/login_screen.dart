@@ -15,24 +15,23 @@ class _googleLoginPageState extends State<googleLoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Container(
-          color: backgroundColorLight,
-          child: Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Expanded(
-                    child:
-                        Image(image: AssetImage('assets/images/qalogo.png'))),
-                SizedBox(height: 50),
-                signInButton(),
-                SizedBox(height: 30),
-                guestButton(),
-              ],
-            ),
+    return Scaffold(
+      body: Container(
+        color: backgroundColorLight,
+        child: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Expanded(
+                  child:
+                      Image(image: AssetImage('assets/images/qalogo.png'))),
+              SizedBox(height: 50),
+              signInButton(),
+              SizedBox(height: 30),
+              guestButton(),
+              SizedBox(height: 50),
+            ],
           ),
         ),
       ),

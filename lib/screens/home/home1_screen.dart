@@ -10,12 +10,12 @@ import '../../services/FsService.dart';
 import '../about/about_screen.dart';
 import '../login/login_screen.dart';
 import '../record/record.dart';
+import '../record/records.dart';
 
 //for global variables test.
 class Global extends GetxController {
   RxInt quizCount = 0.obs;
 }
-
 
 void main() => runApp(MaterialApp());
 
@@ -72,7 +72,8 @@ class HomeState extends State<Home> {
                       Row(
                         children: [
                           //檢查登入資訊，避免無法取得圖片錯誤1121
-                          if (FirebaseAuth.instance.currentUser!.photoURL != null)
+                          if (FirebaseAuth.instance.currentUser!.photoURL !=
+                              null)
                             CircleAvatar(
                               backgroundImage: NetworkImage(
                                   FirebaseAuth.instance.currentUser!.photoURL!),
@@ -91,7 +92,8 @@ class HomeState extends State<Home> {
                             children: [
                               Text(
                                 //check displayName is null or not 1121
-                                FirebaseAuth.instance.currentUser!.displayName !=
+                                FirebaseAuth.instance.currentUser!
+                                            .displayName !=
                                         null
                                     ? FirebaseAuth
                                         .instance.currentUser!.displayName!
@@ -211,7 +213,7 @@ class GridDashboard extends StatelessWidget {
                   } else if (data.title == "製作\n題目") {
                     Get.offAll(() => radioTest());
                   } else if (data.title == "測驗\n紀錄") {
-                    Get.offAll(() => records());
+                    Get.offAll(() => records2());
                   } else if (data.title == "關於\n我們") {
                     Get.offAll(() => FooterPage());
                   }

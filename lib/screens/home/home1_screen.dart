@@ -133,7 +133,7 @@ class HomeState extends State<Home> {
             ),
           ),
           SizedBox(
-            height: 80,
+            height: 20,
           ),
           GridDashboard()
         ],

@@ -85,24 +85,34 @@ class FooterPageState extends State<FooterPage> {
                       Center(
                         child: Image.asset(
                           'assets/images/qalogo.png',
-                          width: 300,
-                          height: 300,
+                          width: 200,
+                          height: 200,
                         ),
                       ),
 
                       Padding(
-                        padding: EdgeInsets.only(left: 10,right:10),
+                        padding: EdgeInsets.only(left: 10, right: 10),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-
-                            Text("聯絡資訊：\n\nEmail : ryan11280@gmail.com \n \n            jean890322@gmail.com\n\nTeL :    0966-603-526 ; 0912-223-223"),
-
-                            SizedBox(height: 20,),
-                            Text('''https://github.com/nyakaz73/Flutter-Footer //MIT //footer \nhttps://github.com/flutter/packages/tree/main/third_party/packages/cupertino_icons //MIT //Cupertino icons\nhttps://pub.dev/packages/firebase_core //firebase core //BSD-3-Clause\nhttps://pub.dev/packages/firebase_storage //firebase storage //BSD-3-Clause\nhttps://pub.dev/packages/google_fonts  // google fonts //Apache 2-.0\nhttps://pub.dev/packages/flutter_svg  //flutter svg //MIT\nhttps://pub.dev/packages/firebase_auth //firebase auth //BSD-3-Clause\nhttps://pub.dev/packages/google_sign_in   // google sign in //BSD-3-Clause\n https://pub.dev/packages/xen_popup_card  //xen popup card // MIT\nhttps://pub.dev/packages/http\n //http // BSD-3-Clause\nhttps://pub.dev/packages/fluttertoast   //flutte troast  //MIT\nhttps://pub.dev/packages/file_picker   //file picker // MIT\nhttps://pub.dev/packages/csv   //csv //MIT
-
+                            Text("版本資訊： v1.0\n更新日期：2022/12/12"),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            Text(
+                                "聯絡資訊：\nEmail : ryan11280@gmail.com \n \n            jean890322@gmail.com\n\nTeL :    0987-654-321 ; 0912-223-223"),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            Text(
+                                '''References: \nhttps://github.com/nyakaz73/Flutter-Footer \nhttps://github.com/flutter/packages/tree/main/third_party/packages/cupertino_icons\nhttps://pub.dev/packages/firebase_core\nhttps://pub.dev/packages/firebase_storage\nhttps://pub.dev/packages/google_fonts\nhttps://pub.dev/packages/flutter_svg\nhttps://pub.dev/packages/firebase_auth\nhttps://pub.dev/packages/google_sign_in\nhttps://pub.dev/packages/http\nhttps://pub.dev/packages/fluttertoast\nhttps://pub.dev/packages/csv
                                 '''),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            Text(
+                                "BSD-3-Clause License\n\nRedistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:\n\n1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.\n\n2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.\n\n3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."),
                           ],
                         ),
                       )
@@ -125,7 +135,7 @@ class FooterPageState extends State<FooterPage> {
                           color: Color(0xFF162A49)),
                     ),
                     Text(
-                      'Powered by QA',
+                      'Powered by Quiz',
                       style: TextStyle(
                           fontWeight: FontWeight.w300,
                           fontSize: 12.0,

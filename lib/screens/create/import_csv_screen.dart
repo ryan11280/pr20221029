@@ -1,18 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:pr20221029/models/GsModel2.dart';
 import 'package:pr20221029/screens/create/create_question.dart';
 import 'package:get/get.dart';
-import 'package:csv/csv.dart';
 import 'package:http/http.dart' as http;
-import 'dart:io';
 import 'package:pr20221029/services/GsService.dart';
-
-import '../../configs/configs.dart';
 import '../../configs/themes/app_colors.dart';
 import '../../models/GsModel.dart';
 import '../../services/FsService.dart';
-import '../quiz/GsScreen.dart';
 
 List<GsQuestionSheets> GsQuestionListImport =
     []; //共用model, 依model建立空list 放外面working!
@@ -192,8 +186,7 @@ class _importCsvScreenState extends State<importCsvScreen> {
                           //"Screen端: 最新一題解答: 選項${GsQuestionListImport.last.correctAnswer}");
                           //print("Screen端: 最新一題新增時間: ${GsQuestionListImport.last.addTime}");
                           Fluttertoast.showToast(
-                              msg:
-                                  "完成!, 匯入了${GsQuestionListImport.length}個題目",
+                              msg: "完成!, 匯入了${GsQuestionListImport.length}個題目",
                               toastLength: Toast.LENGTH_SHORT,
                               gravity: ToastGravity.BOTTOM,
                               timeInSecForIosWeb: 1,
@@ -280,18 +273,23 @@ class _importCsvScreenState extends State<importCsvScreen> {
                           GsQuestionListImport.add(snapshot.data![index]);
                           return Card(
                             child: ListTile(
-                              onTap: ()async{
+                              onTap: () async {
                                 showDialog(
                                   context: context,
                                   builder: (BuildContext context) {
                                     return AlertDialog(
-                                      title: Text("${GsQuestionListImport[index].questionName}"
-                                      ,maxLines: 4,
-                                      overflow: TextOverflow.ellipsis,),
-                                      content: Text("選項A: ${GsQuestionListImport[index].answer1}\n選項B: ${GsQuestionListImport[index].answer2}\n選項C: ${GsQuestionListImport[index].answer3}\n選項D: ${GsQuestionListImport[index].answer4}\n\n正確答案: ${GsQuestionListImport[index].correctAnswer}\n\n建立時間"
-                                          ": ${GsQuestionListImport[index].addTime}", maxLines: 10, overflow: TextOverflow.ellipsis,),
-                                      actions: [
-                                      ],
+                                      title: Text(
+                                        "${GsQuestionListImport[index].questionName}",
+                                        maxLines: 4,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                      content: Text(
+                                        "選項A: ${GsQuestionListImport[index].answer1}\n選項B: ${GsQuestionListImport[index].answer2}\n選項C: ${GsQuestionListImport[index].answer3}\n選項D: ${GsQuestionListImport[index].answer4}\n\n正確答案: ${GsQuestionListImport[index].correctAnswer}\n\n建立時間"
+                                        ": ${GsQuestionListImport[index].addTime}",
+                                        maxLines: 10,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                      actions: [],
                                     );
                                   },
                                 );

@@ -1,24 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:pr20221029/screens/home/home1_screen.dart';
-import 'package:pr20221029/services/firebase_authentication.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:pr20221029/controllers/firebase_google_login_controller.dart';
-import 'package:pr20221029/services/firebase_authentication.dart';
 import 'package:get/get.dart';
 
 import '../../configs/themes/app_light_theme.dart';
 
 class googleLoginPage extends StatefulWidget {
-  //final AuthRepository _authRepository = AuthRepository();
-  //googleLoginPage({Key? key}) : super(key: key);
   @override
   _googleLoginPageState createState() => _googleLoginPageState();
 }
 
 class _googleLoginPageState extends State<googleLoginPage> {
   get _authRepository => AuthRepository();
-
-  //get _googleSignIn => signInWithGoogle2();
 
   @override
   Widget build(BuildContext context) {

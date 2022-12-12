@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
@@ -86,7 +87,7 @@ class _replyState extends State<reply> {
 
   void ifAnswered() {
     //暫停1秒後重新載入頁面
-    Future.delayed(Duration(seconds: 1), () {
+    Future.delayed(Duration(seconds: 1), () async {
       //檢查是否作答完畢
       if (quizIndex < quizLimit) {
         refreshQuestion2();
@@ -99,6 +100,9 @@ class _replyState extends State<reply> {
       } else {
         //測驗結束 轉 成績頁面
         print("--------測驗結束 成績: $score----------");
+        //上傳成績
+        String uid = FirebaseAuth.instance.currentUser!.uid;
+        await FsUploadScore(uid, score);
         //轉到score頁面
         Get.offAll(() => scorefomal(score: score));
       }
@@ -419,9 +423,8 @@ class _replyState extends State<reply> {
                                         child: const Text('交卷走人'),
                                         onPressed: () {
                                           Navigator.of(context).pop();
-                                          Get.offAll(() => scorefomal(
-                                                score: score,
-                                              ));
+                                          quizIndex = 10; //直接答完
+                                          ifAnswered();
                                         },
                                       ),
                                     ],

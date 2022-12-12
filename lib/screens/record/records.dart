@@ -36,7 +36,8 @@ class _recordsState extends State<records2> {
         ],
       ),
       body: const Center(
-        child: Text('顯示測驗紀錄'),
+        child:
+            Text('顯示測驗紀錄', style: TextStyle(fontWeight: FontWeight.w200)),
       ),
     );
   }

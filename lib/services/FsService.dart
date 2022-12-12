@@ -1,6 +1,22 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:pr20221029/models/FsModel.dart';
+import 'package:pr20221029/services/firebase_storage_service.dart';
+
+//答題紀錄 將成績傳上去
+Future<void> FsUploadScore(
+    String uid, int score) async {
+  await Firebase.initializeApp();
+  CollectionReference result = FirebaseFirestore.instance.collection('records');
+  result.add({
+    'uid': uid,
+    'score': score,
+    'time': DateTime.now().toString(), //以上傳時間為準
+  });
+  print("uid: $uid, score: $score, 成績上傳完成!");
+}
+
+
 
 //fetch data from firestore then return a FsQuestionList model list 1123
 Future<List<FsQuestionList>> fetchFsQuestionList() async {

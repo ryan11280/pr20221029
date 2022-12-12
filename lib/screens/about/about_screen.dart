@@ -106,7 +106,7 @@ class FooterPageState extends State<FooterPage> {
                               height: 20,
                             ),
                             Text(
-                                '''References: \nhttps://github.com/nyakaz73/Flutter-Footer \nhttps://github.com/flutter/packages/tree/main/third_party/packages/cupertino_icons\nhttps://pub.dev/packages/firebase_core\nhttps://pub.dev/packages/firebase_storage\nhttps://pub.dev/packages/google_fonts\nhttps://pub.dev/packages/flutter_svg\nhttps://pub.dev/packages/firebase_auth\nhttps://pub.dev/packages/google_sign_in\nhttps://pub.dev/packages/http\nhttps://pub.dev/packages/fluttertoast\nhttps://pub.dev/packages/csv
+                                '''References: \nhttps://github.com/nyakaz73/Flutter-Footer \nhttps://github.com/flutter/packages/tree/main/third_party/packages/cupertino_icons\nhttps://pub.dev/packages/firebase_core\nhttps://pub.dev/packages/firebase_storage\nhttps://pub.dev/packages/google_fonts\nhttps://pub.dev/packages/flutter_svg\nhttps://pub.dev/packages/firebase_auth\nhttps://pub.dev/packages/google_sign_in\nhttps://pub.dev/packages/http\nhttps://pub.dev/packages/fluttertoast\nhttps://pub.dev/packages/csv\nhttps://github.com/ZaynJarvis/Flutter-Sign-in-Button
                                 '''),
                             SizedBox(
                               height: 20,

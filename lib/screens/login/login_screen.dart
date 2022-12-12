@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:pr20221029/configs/themes/app_colors.dart';
 import 'package:pr20221029/screens/home/home1_screen.dart';
 import 'package:pr20221029/controllers/firebase_google_login_controller.dart';
 import 'package:get/get.dart';
-
+import 'package:flutter_signin_button/flutter_signin_button.dart';
 import '../../configs/themes/app_light_theme.dart';
 
 class googleLoginPage extends StatefulWidget {
@@ -23,12 +24,10 @@ class _googleLoginPageState extends State<googleLoginPage> {
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Expanded(
+              Flexible(
                   child: Image(image: AssetImage('assets/images/qalogo.png'))),
-              SizedBox(height: 50),
+              SizedBox(height: 100),
               signInButton(),
-              SizedBox(height: 30),
-              guestButton(),
               SizedBox(height: 50),
             ],
           ),
@@ -61,10 +60,10 @@ class _googleLoginPageState extends State<googleLoginPage> {
             Padding(
               padding: EdgeInsets.only(left: 10),
               child: Text(
-                'Guest',
+                '訪客登入',
                 style: TextStyle(
                   fontSize: 20,
-                  color: Colors.grey,
+                  color: Colors.white,
                 ),
               ),
             )
@@ -75,10 +74,10 @@ class _googleLoginPageState extends State<googleLoginPage> {
   }
 
   Widget signInButton() {
-    return OutlinedButton(
-      style: OutlinedButton.styleFrom(
-        backgroundColor: Colors.black,
-        //primary: Colors.amberAccent, //<-- SEE HERE
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        primary: Colors.white,
+        onPrimary: Colors.black,
       ),
       onPressed: () async {
         void loginSuccess() {
@@ -110,22 +109,29 @@ class _googleLoginPageState extends State<googleLoginPage> {
         });*/
       },
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+        padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[
-            // Image(image: AssetImage(""), height: 35.0),
+          children: const [
+            Flexible(
+              child: Image(
+                image: AssetImage("assets/images/googleLogo.png"),
+                height: 30.0,
+                width: 30,
+              ),
+            ),
             Padding(
-              padding: EdgeInsets.only(left: 10),
+              padding: EdgeInsets.only(left: 24, right: 8),
               child: Text(
                 'Sign in with Google',
                 style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.grey,
+                  fontSize: 22,
+                  color: Colors.black54,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),

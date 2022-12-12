@@ -29,114 +29,118 @@ class HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFC1C1C1),
-      body: Column(
-        children: <Widget>[
-          const SizedBox(
-            height: 120,
-          ),
-          Padding(
-            padding: EdgeInsets.only(left: 16, right: 16),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      "Home",
-                      style: GoogleFonts.acme(
-                          textStyle: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black87,
-                        fontSize: 40,
-                      )),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Text(
-                      "Welcome!",
-                      style: GoogleFonts.openSans(
-                          textStyle: TextStyle(
-                              color: Color(0xFF101012),
-                              fontSize: 14,
-                              fontWeight: FontWeight.w200)),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    //FirebaseAuth.instance.currentUser!.displayName!
-                    Row(
-                      children: [
-                        //檢查登入資訊，避免無法取得圖片錯誤1121
-                        if (FirebaseAuth.instance.currentUser!.photoURL != null)
-                          CircleAvatar(
-                            backgroundImage: NetworkImage(
-                                FirebaseAuth.instance.currentUser!.photoURL!),
-                            radius: 30,
-                          )
-                        else
-                          (const CircleAvatar(
-                            radius: 30,
-                            child: Icon(Icons.person),
-                          )),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              //check displayName is null or not 1121
-                              FirebaseAuth.instance.currentUser!.displayName !=
-                                      null
-                                  ? FirebaseAuth
-                                      .instance.currentUser!.displayName!
-                                  : "No Name",
-                              style: GoogleFonts.alice(
-                                  textStyle: TextStyle(
-                                color: Colors.black87,
-                                fontSize: 18,
-                              )),
-                            ),
-                            Text(
-                              //check email is null or not 1121
-                              FirebaseAuth.instance.currentUser!.email != null
-                                  ? FirebaseAuth.instance.currentUser!.email!
-                                  : "No Email",
-                              style: GoogleFonts.alice(
-                                  textStyle: TextStyle(
-                                color: Colors.black87,
-                                fontSize: 14,
-                              )),
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 70,
-                  child: IconButton(
-                    alignment: Alignment.topCenter,
-                    icon: const Icon(Icons.logout, size: 40),
-                    onPressed: () {
-                      print("按下: 返回登入頁");
-                      //logout
-                      FirebaseAuth.instance.signOut();
-                      Get.offAll(() => googleLoginPage());
-                    },
-                  ),
-                )
-              ],
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            const SizedBox(
+              height: 100,
             ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          GridDashboard()
-        ],
+            Padding(
+              padding: EdgeInsets.only(left: 16, right: 16),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        "Home",
+                        style: GoogleFonts.acme(
+                            textStyle: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black87,
+                          fontSize: 40,
+                        )),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        "Welcome!",
+                        style: GoogleFonts.openSans(
+                            textStyle: TextStyle(
+                                color: Color(0xFF101012),
+                                fontSize: 14,
+                                fontWeight: FontWeight.w200)),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      //FirebaseAuth.instance.currentUser!.displayName!
+                      Row(
+                        children: [
+                          //檢查登入資訊，避免無法取得圖片錯誤1121
+                          if (FirebaseAuth.instance.currentUser!.photoURL != null)
+                            CircleAvatar(
+                              backgroundImage: NetworkImage(
+                                  FirebaseAuth.instance.currentUser!.photoURL!),
+                              radius: 30,
+                            )
+                          else
+                            (const CircleAvatar(
+                              radius: 30,
+                              child: Icon(Icons.person),
+                            )),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                //check displayName is null or not 1121
+                                FirebaseAuth.instance.currentUser!.displayName !=
+                                        null
+                                    ? FirebaseAuth
+                                        .instance.currentUser!.displayName!
+                                    : "No Name",
+                                style: GoogleFonts.alice(
+                                    textStyle: TextStyle(
+                                  color: Colors.black87,
+                                  fontSize: 18,
+                                )),
+                              ),
+                              Text(
+                                //check email is null or not 1121
+                                FirebaseAuth.instance.currentUser!.email != null
+                                    ? FirebaseAuth.instance.currentUser!.email!
+                                    : "No Email",
+                                style: GoogleFonts.alice(
+                                    textStyle: TextStyle(
+                                  color: Colors.black87,
+                                  fontSize: 14,
+                                )),
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 70,
+                    child: IconButton(
+                      alignment: Alignment.topCenter,
+                      icon: const Icon(Icons.logout, size: 40),
+                      onPressed: () {
+                        print("按下: 返回登入頁");
+                        //logout
+                        FirebaseAuth.instance.signOut();
+                        Get.offAll(() => googleLoginPage());
+                      },
+                    ),
+                  )
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 80,
+            ),
+            GridDashboard()
+          ],
+        ),
       ),
     );
   }

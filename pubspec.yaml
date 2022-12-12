@@ -35,5 +35,3 @@ flutter:
   #這邊縮排必須對齊.............
   assets:
     - assets/images/
-    - assets/icons/
-

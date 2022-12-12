@@ -9,7 +9,6 @@ import 'package:pr20221029/screens/quiz/reply.dart';
 import '../../services/FsService.dart';
 import '../about/about_screen.dart';
 import '../login/login_screen.dart';
-import '../record/record.dart';
 import '../record/records.dart';
 
 //for global variables test.

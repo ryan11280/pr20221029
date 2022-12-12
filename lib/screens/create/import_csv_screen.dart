@@ -22,7 +22,12 @@ class _importCsvScreenState extends State<importCsvScreen> {
   GsQuestionSheets? events;
   dynamic url;
   final controller = TextEditingController();
-
+@override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    GsQuestionListImport = []; //清空list
+  }
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -170,11 +175,13 @@ class _importCsvScreenState extends State<importCsvScreen> {
                       onPressed: () async {
                         Fluttertoast.showToast(
                           msg: "匯入中...",
+                          toastLength: Toast.LENGTH_LONG,
                         );
                         //url = controller.text.toString();
                         print("Screen輸入url: $url");
                         //https://stackoverflow.com/questions/64088655/create-csv-file-to-read-from-internet
                         try {
+                          GsQuestionListImport = []; //清空!
                           GsQuestionListImport =
                               await csvToList(url.toString()); //去var
                           //var result2 = await GsGetDataFromGoogleSheet();
@@ -221,32 +228,58 @@ class _importCsvScreenState extends State<importCsvScreen> {
                         side: const BorderSide(width: 2, color: Colors.grey),
                       ),
                       onPressed: () async {
-                        Fluttertoast.showToast(
-                          msg: "匯入中...請稍候...",
-                        );
-                        setState(() {}); //刷新頁面
-                        print("上傳至Firebase");
-                        //將題目上傳至firebase
-                        print(
-                            "GsQuestionListImport.length: ${GsQuestionListImport.length}");
-                        for (var i = 0; i < GsQuestionListImport.length; i++) {
-                          //await Future.delayed(const Duration(milliseconds: 500));
-                          await FsCreateQuestion(
-                            question:
-                                GsQuestionListImport[i].questionName.toString(),
-                            answer1: GsQuestionListImport[i].answer1.toString(),
-                            answer2: GsQuestionListImport[i].answer2.toString(),
-                            answer3: GsQuestionListImport[i].answer3.toString(),
-                            answer4: GsQuestionListImport[i].answer4.toString(),
-                            correctAnswer: GsQuestionListImport[i]
-                                .correctAnswer
-                                .toString(),
-                          );
+                        //檢查GsQuestionListImport是否有資料
+                        if(GsQuestionListImport.length == 0){
+                          Fluttertoast.showToast(
+                              msg: "沒有讀取到題目，請先匯入題庫！",
+                              toastLength: Toast.LENGTH_SHORT,
+                              gravity: ToastGravity.BOTTOM,
+                              timeInSecForIosWeb: 1,
+                              backgroundColor: Colors.black,
+                              textColor: Colors.red,
+                              fontSize: 16.0);
                         }
-                        Fluttertoast.showToast(
-                          msg: "Done！本次新增了${GsQuestionListImport.length}題",
-                        );
-                        print("上傳完成！本次新增了${GsQuestionListImport.length}題");
+                        else{
+                          try{
+                            Fluttertoast.showToast(
+                              msg: "匯入中...請稍候...",
+                            );
+                            setState(() {}); //刷新頁面
+                            print("上傳至Firebase");
+                            //將題目上傳至firebase
+                            print(
+                                "GsQuestionListImport.length: ${GsQuestionListImport.length}");
+                            for (var i = 0; i < GsQuestionListImport.length; i++) {
+                              //await Future.delayed(const Duration(milliseconds: 500));
+                              await FsCreateQuestion(
+                                question:
+                                GsQuestionListImport[i].questionName.toString(),
+                                answer1: GsQuestionListImport[i].answer1.toString(),
+                                answer2: GsQuestionListImport[i].answer2.toString(),
+                                answer3: GsQuestionListImport[i].answer3.toString(),
+                                answer4: GsQuestionListImport[i].answer4.toString(),
+                                correctAnswer: GsQuestionListImport[i]
+                                    .correctAnswer
+                                    .toString(),
+                              );
+                            }
+                            Fluttertoast.showToast(
+                              msg: "Done！本次新增了${GsQuestionListImport.length}題",
+                            );
+                            print("上傳完成！本次新增了${GsQuestionListImport.length}題");
+                          }
+                          catch(e){
+                            print("匯入錯誤: $e");
+                            Fluttertoast.showToast(
+                                msg: "錯誤: $e",
+                                toastLength: Toast.values[1],
+                                gravity: ToastGravity.BOTTOM,
+                                timeInSecForIosWeb: 1,
+                                backgroundColor: Colors.black,
+                                textColor: Colors.red,
+                                fontSize: 16.0);
+                          }
+                        }
                       },
                       child: Text('傳上題庫'),
                     )

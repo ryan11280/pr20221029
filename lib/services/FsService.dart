@@ -13,6 +13,7 @@ Future<List> FsFetchRecords() async {
     recordList.add(element.data());
   });
   print(recordList[0]);
+  recordList.sort((a, b) => b['time'].compareTo(a['time']));
   return recordList;
 }
 
